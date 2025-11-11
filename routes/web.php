@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotspotAdminController;
 use App\Http\Controllers\PortalController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 
 // Route utama langsung ke portal login
 Route::get('/', [PortalController::class, 'show'])->name('portal.show');
@@ -12,6 +13,14 @@ Route::post('/login', [PortalController::class, 'submit'])->name('portal.submit'
 // Route dashboard user
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::post('/logout', [DashboardController::class, 'logout'])->name('logout');
+
+// Route admin login
+Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.post');
+Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+// Route admin logs (protected)
+Route::get('/admin/logs', [AdminController::class, 'logs'])->name('admin.logs')->middleware('admin.auth');
 
 // Route admin hotspot management
 Route::get('/admin/hotspot/users', [HotspotAdminController::class, 'index']);
