@@ -71,85 +71,6 @@
             }
         }
 
-        /* Floating particles/bubbles */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            animation: float-up 15s infinite ease-in;
-        }
-
-        .particle:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            left: 10%;
-            animation-delay: 0s;
-            animation-duration: 20s;
-        }
-
-        .particle:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            left: 30%;
-            animation-delay: 2s;
-            animation-duration: 18s;
-        }
-
-        .particle:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            left: 50%;
-            animation-delay: 4s;
-            animation-duration: 22s;
-        }
-
-        .particle:nth-child(4) {
-            width: 50px;
-            height: 50px;
-            left: 70%;
-            animation-delay: 3s;
-            animation-duration: 17s;
-        }
-
-        .particle:nth-child(5) {
-            width: 70px;
-            height: 70px;
-            left: 85%;
-            animation-delay: 5s;
-            animation-duration: 19s;
-        }
-
-        @keyframes float-up {
-            0% {
-                bottom: -100px;
-                opacity: 0;
-                transform: translateY(0) rotate(0deg);
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                bottom: 110%;
-                opacity: 0;
-                transform: translateY(-100px) rotate(360deg);
-            }
-        }
 
         .header-content {
             position: relative;
@@ -221,16 +142,8 @@
         }
 
         .login-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            padding: 40px 35px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .login-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            background: transparent;
+            padding: 0;
         }
 
         .form-group {
@@ -249,58 +162,45 @@
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 16px 20px;
-            border: 1px solid #d1d3e2;
+            padding: 18px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 16px;
             transition: all 0.3s ease;
-            background: #f8f9fc;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         input[type="text"]::placeholder,
         input[type="password"]::placeholder {
-            color: #b7b9cc;
+            color: #9ca3af;
         }
 
         input[type="text"]:focus,
         input[type="password"]:focus {
             outline: none;
-            border-color: #4e73df;
+            border-color: rgba(255, 255, 255, 0.8);
             background: white;
-            box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.1);
-            transform: scale(1.02);
-        }
-
-        .forgot-password {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .forgot-password a {
-            color: #4e73df;
-            font-size: 13px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .forgot-password a:hover {
-            color: #36b9cc;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
 
         button[type="submit"] {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
-            color: white;
-            border: none;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: #4e73df;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 17px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(78, 115, 223, 0.3);
-            margin-top: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
             position: relative;
             overflow: hidden;
         }
@@ -308,39 +208,46 @@
         button[type="submit"]::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         button[type="submit"]:hover::before {
-            width: 300px;
-            height: 300px;
+            opacity: 1;
         }
 
         button[type="submit"]:hover {
+            color: white;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(78, 115, 223, 0.4);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            border-color: transparent;
         }
 
         button[type="submit"]:active {
             transform: translateY(0);
         }
 
+        button[type="submit"] span {
+            position: relative;
+            z-index: 1;
+        }
+
         .error-message {
-            background: #f8d7da;
-            border-left: 4px solid #e74a3b;
-            color: #721c24;
-            padding: 12px 15px;
-            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 14px 18px;
+            border-radius: 12px;
             margin-top: 20px;
             font-size: 14px;
             animation: shake 0.5s;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
         }
 
         @keyframes shake {
@@ -377,9 +284,10 @@
 
         .footer-text {
             text-align: center;
-            color: #858796;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 13px;
             margin-top: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         /* Responsive */
@@ -432,19 +340,10 @@
 
 <body>
     <div class="wave-header">
-        <!-- Floating Particles -->
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-
         <!-- Header Content -->
         <div class="header-content">
-            <h1>SILANCAR</h1>
-            <p>Sistem Layanan Internal CAR</p>
+            <h1>Internet Access</h1>
+            <p>Welcome to the Internet Access System</p>
         </div>
 
         <!-- SVG Animated Waves -->
@@ -480,11 +379,7 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
 
-                <div class="forgot-password">
-                    <a href="#">Klik disini untuk Lupa password</a>
-                </div>
-
-                <button type="submit">Sign In</button>
+                <button type="submit"><span>Sign In</span></button>
             </form>
 
             @if ($errors->any())
