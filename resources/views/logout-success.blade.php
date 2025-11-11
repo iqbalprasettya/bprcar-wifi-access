@@ -160,7 +160,7 @@
             Anda telah berhasil keluar dari jaringan internet. Terima kasih telah menggunakan layanan kami.
         </p>
 
-        <a href="{{ route('portal.show') }}" class="login-btn">
+        <a href="http://login.bprcar.local/" class="login-btn">
             Login Kembali
         </a>
 
