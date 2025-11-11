@@ -148,7 +148,7 @@
             z-index: 10;
             padding: 50px 20px 20px;
             color: white;
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -221,23 +221,6 @@
             margin: 0;
         }
 
-        .logout-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-        }
-
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -275,7 +258,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: -80px auto 50px;
             padding: 0 20px;
             position: relative;
@@ -719,42 +702,42 @@
         </svg>
 
         <div class="header-content">
-            <div class="header-top">
-                <div class="header-left">
-                    <h1>Hotspot Activity Logs</h1>
-                    <p>Monitor dan tracking aktivitas user hotspot</p>
+            <div class="header-left">
+                <h1>Hotspot Activity Logs</h1>
+                <p>Monitor dan tracking aktivitas user hotspot</p>
+            </div>
+            <div class="header-right">
+                <div class="status-badge">
+                    <span style="width: 8px; height: 8px; background: #1cc88a; border-radius: 50%;"></span>
+                    Admin Online
                 </div>
-                <div class="header-right">
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div class="welcome-text">
-                            👤 Admin
-                        </div>
-                        <div class="username-display">
-                            {{ Auth::user()->name }}
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="{{ route('admin.active-users') }}" class="nav-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    style="width: 16px; height: 16px;">
-                                    <path
-                                        d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
-                                </svg>
-                                Active Users
-                            </a>
-                            <form method="POST" action="{{ route('admin.logout') }}" style="display: inline;">
-                                @csrf
-                                <button type="submit" class="logout-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        style="width: 16px; height: 16px;">
-                                        <path fill-rule="evenodd"
-                                            d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Logout
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                <div class="welcome-text">
+                    👤 Admin
+                </div>
+                <div class="username-display">
+                    {{ Auth::user()->name }}
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="{{ route('admin.active-users') }}" class="nav-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            style="width: 16px; height: 16px;">
+                            <path
+                                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+                        </svg>
+                        Active Users
+                    </a>
+                    <form method="POST" action="{{ route('admin.logout') }}" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="logout-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                style="width: 16px; height: 16px;">
+                                <path fill-rule="evenodd"
+                                    d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Logout
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -821,7 +804,7 @@
                         <div class="stat-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path
-                                    d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                                    d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 101.061 1.06l8.69-8.69z" />
                                 <path
                                     d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                             </svg>
@@ -989,6 +972,7 @@
                 @endif
             </div>
         </div>
+    </div>
 </body>
 
 </html>
