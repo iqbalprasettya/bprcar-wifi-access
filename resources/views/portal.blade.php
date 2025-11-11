@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Login Internet BPR</title>
+    <title>Portal Login Internet BPR CAR</title>
     <style>
         * {
             margin: 0;
@@ -14,140 +14,137 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f5f5f5;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+        }
+
+        .wave-header {
+            position: relative;
+            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .wave-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f5f5f5' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding-top: 60px;
+            color: white;
+        }
+
+        .header-content h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content p {
+            font-size: 20px;
+            font-weight: 400;
+            opacity: 0.95;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 420px;
+            max-width: 480px;
+            margin: -100px auto 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             padding: 40px 35px;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo-section {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo-circle {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        .logo-circle svg {
-            width: 45px;
-            height: 45px;
-            fill: white;
-        }
-
-        h2 {
-            color: #1e3a8a;
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 30px;
         }
 
         .form-group {
-            margin-bottom: 20px;
-            position: relative;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            color: #475569;
+            color: #858796;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 500;
             margin-bottom: 8px;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .input-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #64748b;
-        }
-
-        .input-icon svg {
-            width: 20px;
-            height: 20px;
+            text-align: center;
         }
 
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 14px 15px 14px 45px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
+            padding: 16px 20px;
+            border: 1px solid #d1d3e2;
+            border-radius: 50px;
             font-size: 15px;
             transition: all 0.3s ease;
-            background: #f8fafc;
+            background: #f8f9fc;
+            text-align: center;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #b7b9cc;
         }
 
         input[type="text"]:focus,
         input[type="password"]:focus {
             outline: none;
-            border-color: #3b82f6;
+            border-color: #4e73df;
             background: white;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.1);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .forgot-password a {
+            color: #4e73df;
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .forgot-password a:hover {
+            color: #36b9cc;
         }
 
         button[type="submit"] {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+            padding: 16px;
+            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 50px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 15px rgba(78, 115, 223, 0.3);
             margin-top: 10px;
         }
 
         button[type="submit"]:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 6px 20px rgba(78, 115, 223, 0.4);
         }
 
         button[type="submit"]:active {
@@ -155,9 +152,9 @@
         }
 
         .error-message {
-            background: #fee2e2;
-            border-left: 4px solid #ef4444;
-            color: #991b1b;
+            background: #f8d7da;
+            border-left: 4px solid #e74a3b;
+            color: #721c24;
             padding: 12px 15px;
             border-radius: 8px;
             margin-top: 20px;
@@ -175,91 +172,100 @@
 
         .footer-text {
             text-align: center;
-            color: #94a3b8;
-            font-size: 12px;
-            margin-top: 25px;
+            color: #858796;
+            font-size: 13px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .wave-header {
+                height: 280px;
+            }
+
+            .header-content {
+                padding-top: 40px;
+            }
+
+            .header-content h1 {
+                font-size: 32px;
+            }
+
+            .header-content p {
+                font-size: 16px;
+            }
+
+            .container {
+                margin-top: -80px;
+            }
+
+            .login-card {
+                padding: 30px 25px;
+            }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 30px 25px;
+            .wave-header {
+                height: 250px;
             }
 
-            h2 {
-                font-size: 22px;
+            .header-content h1 {
+                font-size: 28px;
+            }
+
+            .header-content p {
+                font-size: 15px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="logo-section">
-            <div class="logo-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                    <path
-                        d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                </svg>
-            </div>
-            <h2>Selamat Datang</h2>
-            <p class="subtitle">Portal Internet BPR CAR</p>
+    <div class="wave-header">
+        <div class="header-content">
+            <h1>SILANCAR</h1>
+            <p>Sistem Layanan Internal CAR</p>
         </div>
+    </div>
 
-        <form method="post" action="{{ route('portal.submit') }}">
-            @csrf
-            <input type="hidden" name="mac" value="{{ $mac ?? '' }}">
-            <input type="hidden" name="ip" value="{{ $ip ?? '' }}">
-            <input type="hidden" name="dst" value="{{ $dst ?? 'http://google.com' }}">
+    <div class="container">
+        <div class="login-card">
+            <form method="post" action="{{ route('portal.submit') }}">
+                @csrf
+                <input type="hidden" name="mac" value="{{ $mac ?? '' }}">
+                <input type="hidden" name="ip" value="{{ $ip ?? '' }}">
+                <input type="hidden" name="dst" value="{{ $dst ?? 'http://google.com' }}">
 
-            <div class="form-group">
-                <label for="username">Username</label>
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <input type="text" id="username" name="username" placeholder="Masukkan username" required
-                        autofocus>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Username" required autofocus>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
+
+                <div class="forgot-password">
+                    <a href="#">Klik disini untuk Lupa password</a>
+                </div>
+
+                <button type="submit">Sign In</button>
+            </form>
+
+            @if ($errors->any())
+                <div class="error-message">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <div class="footer-text">
+                © {{ date('Y') }} BPR CAR. All rights reserved.
             </div>
-
-            <button type="submit">
-                Masuk ke Internet
-            </button>
-        </form>
-
-        @if ($errors->any())
-            <div class="error-message">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <p class="footer-text">
-            © {{ date('Y') }} BPR CAR. Gunakan kredensial yang valid.
-        </p>
+        </div>
     </div>
 </body>
 
