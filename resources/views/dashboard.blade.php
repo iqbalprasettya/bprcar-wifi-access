@@ -146,9 +146,25 @@
         .header-content {
             position: relative;
             z-index: 10;
-            text-align: center;
-            padding-top: 50px;
+            padding: 50px 20px 20px;
             color: white;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-left {
+            flex: 1;
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .header-right {
+            flex: 1;
+            text-align: right;
+            animation: fadeInRight 0.8s ease-out;
         }
 
         .status-badge {
@@ -160,10 +176,9 @@
             color: white;
             padding: 8px 20px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 15px;
-            animation: fadeIn 0.8s ease-out;
+            margin-bottom: 12px;
         }
 
         .status-dot {
@@ -190,59 +205,53 @@
             }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .header-content h1 {
+        .header-left h1 {
             font-size: 36px;
             font-weight: 700;
-            margin-bottom: 8px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: fadeInDown 0.8s ease-out 0.2s both;
+            margin: 0;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .header-left p {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-top: 8px;
         }
 
-        .header-content .welcome-text {
-            font-size: 16px;
-            opacity: 0.95;
-            margin-bottom: 5px;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
+        .welcome-text {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 8px;
         }
 
         .username-display {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 5px;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 0;
         }
 
-        @keyframes fadeInUp {
+        @keyframes fadeInLeft {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateX(-30px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
@@ -470,7 +479,7 @@
 
         @media (max-width: 768px) {
             .wave-header {
-                height: 250px;
+                height: 280px;
             }
 
             .waves {
@@ -479,11 +488,27 @@
             }
 
             .header-content {
-                padding-top: 35px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding-top: 30px;
             }
 
-            .header-content h1 {
+            .header-left {
+                width: 100%;
+            }
+
+            .header-right {
+                width: 100%;
+                text-align: left;
+            }
+
+            .header-left h1 {
                 font-size: 28px;
+            }
+
+            .username-display {
+                font-size: 24px;
             }
 
             .container {
@@ -501,15 +526,27 @@
 
         @media (max-width: 480px) {
             .wave-header {
-                height: 220px;
+                height: 250px;
             }
 
-            .header-content h1 {
+            .header-content {
+                padding-top: 25px;
+            }
+
+            .header-left h1 {
                 font-size: 24px;
             }
 
+            .header-left p {
+                font-size: 13px;
+            }
+
             .username-display {
-                font-size: 18px;
+                font-size: 20px;
+            }
+
+            .welcome-text {
+                font-size: 13px;
             }
 
             .info-card {
@@ -531,13 +568,18 @@
 
         <!-- Header Content -->
         <div class="header-content">
-            <div class="status-badge">
-                <span class="status-dot"></span>
-                Connected
+            <div class="header-left">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    Connected
+                </div>
+                <h1>Dashboard Internet</h1>
+                <p>Kelola koneksi dan data internet Anda</p>
             </div>
-            <h1>Dashboard Internet</h1>
-            <p class="welcome-text">Selamat datang kembali,</p>
-            <div class="username-display">{{ $sessionData['username'] }}</div>
+            <div class="header-right">
+                <p class="welcome-text">Selamat datang kembali,</p>
+                <div class="username-display">{{ $sessionData['username'] }}</div>
+            </div>
         </div>
 
         <!-- SVG Animated Waves -->
