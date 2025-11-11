@@ -183,12 +183,13 @@ class HotspotLogService
         return HotspotLog::create([
             'username' => $username,
             'ip_address' => $ip,
-            'action' => 'admin_kick',
+            'action' => 'kicked',
             'status' => 'success',
             'user_agent' => $userAgent ?? request()->userAgent(),
             'device_type' => $deviceInfo['device_type'],
             'browser' => $deviceInfo['browser'],
-            'platform' => $deviceInfo['platform']
+            'platform' => $deviceInfo['platform'],
+            'error_message' => 'Kicked by admin'
         ]);
     }
 

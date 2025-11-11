@@ -169,8 +169,13 @@ class AdminController extends Controller
             $result = $mikrotik->kickUser($username);
 
             if ($result['success']) {
-                // Log the kick action
-                $this->logService->logKick($username, $request->ip(), $request->userAgent());
+                // Log the kick action (with error handling)
+                try {
+                    $this->logService->logKick($username, $request->ip(), $request->userAgent());
+                } catch (\Exception $logError) {
+                    // Log error to Laravel's log instead of stopping the process
+                    \Log::warning('Failed to log kick action: ' . $logError->getMessage());
+                }
 
                 return redirect()->route('admin.active-users')
                     ->with('success', $result['message']);
