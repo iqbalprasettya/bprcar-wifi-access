@@ -21,8 +21,8 @@
 
         .wave-header {
             position: relative;
-            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
-            height: 260px;
+            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
+            height: 300px;
             overflow: hidden;
         }
 
@@ -74,40 +74,79 @@
         .header-content {
             position: relative;
             z-index: 10;
-            padding: 35px 25px 25px;
+            padding: 50px 20px 20px;
             color: white;
-        }
-
-        .header-top {
+            max-width: 900px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            gap: 30px;
+        }
+
+        .header-left {
+            flex: 1;
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .header-right {
+            flex: 1;
+            text-align: right;
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .header-left h1 {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 36px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 0;
         }
 
         .header-left p {
             font-size: 15px;
-            opacity: 0.95;
-            font-weight: 500;
+            opacity: 0.9;
+            margin-top: 8px;
         }
 
         .header-right {
             text-align: right;
         }
 
-        .admin-info {
+        .welcome-text {
             font-size: 15px;
-            opacity: 0.95;
-            margin-bottom: 12px;
-            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .username-display {
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 0;
         }
 
         .logout-btn {
@@ -127,87 +166,164 @@
             backdrop-filter: blur(10px);
         }
 
-        .nav-btn,
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-btn {
+        .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
 
-        /* Stats Cards */
-        .stats-container {
+        .nav-btn,
+        .logout-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover,
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -80px auto 50px;
+            padding: 0 20px;
             position: relative;
             z-index: 10;
-            margin-top: -70px;
-            padding: 0 25px 35px;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .stat-card {
             background: white;
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #4e73df;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.6s ease-out both;
+        }
+
+        .stat-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stat-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stat-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .stat-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border-color: rgba(78, 115, 223, 0.2);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-card.green {
+            border-left-color: #1cc88a;
+        }
+
+        .stat-card.red {
+            border-left-color: #e74a3b;
+        }
+
+        .stat-card.cyan {
+            border-left-color: #36b9cc;
+        }
+
+        .stat-card.orange {
+            border-left-color: #f6c23e;
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
         }
 
         .stat-label {
-            color: #6c757d;
-            font-size: 13px;
+            color: #5a5c69;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #dddfeb;
+        }
+
+        .stat-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
         .stat-value {
-            font-size: 32px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #5a5c69;
+            font-size: 24px;
+            font-weight: 700;
         }
 
         /* Filters */
         .filters-container {
             background: white;
+            border-radius: 10px;
             padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 25px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            animation: slideUp 0.6s ease-out 0.5s both;
         }
 
         .filters-row {
@@ -263,15 +379,15 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
             color: white;
             border: none;
-            box-shadow: 0 4px 12px rgba(78, 115, 223, 0.25);
+            box-shadow: 0 2px 10px rgba(78, 115, 223, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(78, 115, 223, 0.35);
+            box-shadow: 0 4px 15px rgba(78, 115, 223, 0.4);
         }
 
         .btn-secondary {
@@ -288,10 +404,10 @@
         /* Logs Table */
         .logs-container {
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.6s ease-out 0.6s both;
         }
 
         .logs-table-wrapper {
@@ -304,70 +420,62 @@
         }
 
         thead {
-            background: linear-gradient(135deg, #f8f9fc 0%, #e8eaf6 100%);
+            background: #f8f9fc;
         }
 
         th {
-            padding: 18px 15px;
+            padding: 15px 12px;
             text-align: left;
-            color: #3a3d4a;
+            color: #5a5c69;
             font-size: 13px;
-            font-weight: 800;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 3px solid #4e73df;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #e3e6f0;
         }
 
         tbody tr {
-            border-bottom: 1px solid #e8eaf6;
-            transition: all 0.2s ease;
+            border-bottom: 1px solid #e3e6f0;
+            transition: background 0.3s ease;
         }
 
         tbody tr:hover {
-            background-color: #f8f9fc;
-            transform: scale(1.01);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            background: #f8f9fc;
         }
 
         td {
-            padding: 16px 15px;
-            color: #2d3748;
+            padding: 14px 12px;
+            color: #5a5c69;
             font-size: 14px;
-            font-weight: 500;
         }
 
         .badge {
             display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 4px 10px;
+            border-radius: 12px;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: capitalize;
-            letter-spacing: 0.3px;
         }
 
         .badge-success {
-            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            background: #d1fae5;
             color: #065f46;
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
         }
 
         .badge-danger {
-            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            background: #fee2e2;
             color: #991b1b;
-            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
         }
 
         .badge-info {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            background: #dbeafe;
             color: #1e40af;
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
         }
 
         .badge-warning {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            background: #fef3c7;
             color: #92400e;
-            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
         }
 
         .text-muted {
@@ -376,8 +484,8 @@
         }
 
         .text-bold {
-            font-weight: 700;
-            color: #2d3748;
+            font-weight: 600;
+            color: #5a5c69;
         }
 
         /* Pagination */
@@ -427,22 +535,70 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .header-top {
+            .wave-header {
+                height: auto;
+                min-height: 320px;
+                padding-bottom: 40px;
+            }
+
+            .header-content {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 15px;
+                gap: 25px;
+                padding: 35px 20px 20px;
+                max-width: 100%;
+            }
+
+            .header-left {
+                width: 100%;
             }
 
             .header-right {
+                width: 100%;
                 text-align: left;
+                padding-top: 10px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .header-left h1 {
+                font-size: 26px;
+                line-height: 1.2;
+            }
+
+            .header-left p {
+                font-size: 14px;
+                margin-top: 6px;
+            }
+
+            .username-display {
+                font-size: 24px;
+                line-height: 1.2;
+            }
+
+            .welcome-text {
+                font-size: 14px;
+            }
+
+            .container {
+                margin-top: -50px;
+                padding: 0 15px;
             }
 
             .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat-card {
+                padding: 15px;
             }
 
             .stat-value {
-                font-size: 22px;
+                font-size: 20px;
+            }
+
+            .stat-label {
+                font-size: 10px;
             }
 
             .filters-row {
@@ -490,8 +646,11 @@
                 </div>
                 <div class="header-right">
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div class="admin-info">
-                            👤 Admin: {{ Auth::user()->name }}
+                        <div class="welcome-text">
+                            👤 Admin
+                        </div>
+                        <div class="username-display">
+                            {{ Auth::user()->name }}
                         </div>
                         <div style="display: flex; gap: 10px;">
                             <a href="{{ route('admin.active-users') }}" class="nav-btn">
@@ -520,30 +679,76 @@
             </div>
         </div>
 
-        <div class="stats-container">
+        <div class="container">
             <!-- Stats Cards -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-label">Total Logs</div>
+                    <div class="stat-header">
+                        <div class="stat-label">Total Logs</div>
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M5.507 4.048A3 3 0 017.785 3h8.43a3 3 0 012.278 1.048l1.722 2.008A4.533 4.533 0 0119.5 6h-15c-.243 0-.482.02-.715.056l1.722-2.008z" />
+                                <path fill-rule="evenodd"
+                                    d="M1.5 10.5a3 3 0 013-3h15a3 3 0 110 6h-15a3 3 0 01-3-3zM15.75 17.25v-4.5H18a2.25 2.25 0 002.25-2.25V9.75A2.25 2.25 0 0018 7.5h-2.25v4.5H12v-4.5H9.75v4.5H6v-4.5H3.75v4.5H1.5V21a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 21v-3.75h-6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
                     <div class="stat-value">{{ number_format($stats['total_logs']) }}</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-label">Login Success</div>
-                    <div class="stat-value" style="color: #1cc88a;">{{ number_format($stats['total_logins']) }}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Login Failed</div>
-                    <div class="stat-value" style="color: #e74a3b;">{{ number_format($stats['total_failed']) }}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Unique Users</div>
-                    <div class="stat-value" style="color: #36b9cc;">{{ number_format($stats['unique_users']) }}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Total Traffic</div>
-                    <div class="stat-value" style="color: #f6c23e; font-size: 20px;">
-                        {{ number_format($stats['total_traffic'] / 1024 / 1024, 2) }} MB
+                <div class="stat-card green">
+                    <div class="stat-header">
+                        <div class="stat-label">Login Success</div>
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
                     </div>
+                    <div class="stat-value">{{ number_format($stats['total_logins']) }}</div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-header">
+                        <div class="stat-label">Login Failed</div>
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-value">{{ number_format($stats['total_failed']) }}</div>
+                </div>
+                <div class="stat-card cyan">
+                    <div class="stat-header">
+                        <div class="stat-label">Unique Users</div>
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-value">{{ number_format($stats['unique_users']) }}</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-header">
+                        <div class="stat-label">Total Traffic</div>
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                                <path
+                                    d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-value" style="font-size: 20px;">
+                        {{ number_format($stats['total_traffic'] / 1024 / 1024, 2) }} MB</div>
                 </div>
             </div>
 
@@ -573,7 +778,8 @@
                                     Failed
                                 </option>
                                 <option value="logout" {{ $action == 'logout' ? 'selected' : '' }}>Logout</option>
-                                <option value="view_dashboard" {{ $action == 'view_dashboard' ? 'selected' : '' }}>View
+                                <option value="view_dashboard" {{ $action == 'view_dashboard' ? 'selected' : '' }}>
+                                    View
                                     Dashboard</option>
                             </select>
                         </div>
