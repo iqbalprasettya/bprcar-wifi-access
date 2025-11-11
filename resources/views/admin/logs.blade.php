@@ -880,8 +880,6 @@
                             <th>IP Address</th>
                             <th>Device</th>
                             <th>Status</th>
-                            <th>Traffic</th>
-                            <th>Duration</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -928,23 +926,6 @@
                                         <span class="badge badge-danger">{{ $log->status }}</span>
                                     @else
                                         <span class="badge badge-info">{{ $log->status }}</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($log->bytes_in > 0 || $log->bytes_out > 0)
-                                        <div class="text-muted" style="font-size: 12px;">
-                                            ↓ {{ $log->formatted_bytes_in }}<br>
-                                            ↑ {{ $log->formatted_bytes_out }}
-                                        </div>
-                                    @else
-                                        <span class="text-muted">-</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($log->session_duration)
-                                        <span class="text-muted">{{ $log->formatted_duration }}</span>
-                                    @else
-                                        <span class="text-muted">-</span>
                                     @endif
                                 </td>
                             </tr>
