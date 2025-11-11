@@ -26,52 +26,48 @@
             overflow: hidden;
         }
 
-        /* Wave Animation Layers */
+        /* SVG Wave Animation */
         .waves {
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 100%;
-            height: 120px;
-            margin-bottom: -7px;
-        }
-
-        .wave {
-            position: absolute;
+            height: 12vh;
             bottom: 0;
             left: 0;
-            width: 200%;
-            height: 100%;
-            background-repeat: repeat-x;
+            min-height: 80px;
+            max-height: 120px;
         }
 
-        .wave1 {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f5f5f5' fill-opacity='0.3' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            animation: wave 25s linear infinite;
-            z-index: 1;
-            opacity: 0.5;
+        .parallax>use {
+            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
         }
 
-        .wave2 {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f5f5f5' fill-opacity='0.5' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,170.7C960,160,1056,160,1152,170.7C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            animation: wave 20s linear infinite reverse;
-            z-index: 2;
-            opacity: 0.7;
+        .parallax>use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
         }
 
-        .wave3 {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f5f5f5' fill-opacity='1' d='M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,165.3C672,149,768,139,864,149.3C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            animation: wave 15s linear infinite;
-            z-index: 3;
+        .parallax>use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
         }
 
-        @keyframes wave {
+        .parallax>use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+
+        .parallax>use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
             0% {
-                transform: translateX(0);
+                transform: translate3d(-90px, 0, 0);
             }
 
             100% {
-                transform: translateX(-50%);
+                transform: translate3d(85px, 0, 0);
             }
         }
 
@@ -477,6 +473,11 @@
                 height: 250px;
             }
 
+            .waves {
+                height: 40px;
+                min-height: 40px;
+            }
+
             .header-content {
                 padding-top: 35px;
             }
@@ -539,12 +540,20 @@
             <div class="username-display">{{ $sessionData['username'] }}</div>
         </div>
 
-        <!-- Animated Waves -->
-        <div class="waves">
-            <div class="wave wave1"></div>
-            <div class="wave wave2"></div>
-            <div class="wave wave3"></div>
-        </div>
+        <!-- SVG Animated Waves -->
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave-dash"
+                    d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave-dash" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                <use xlink:href="#gentle-wave-dash" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave-dash" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave-dash" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
     </div>
 
     <div class="container">
