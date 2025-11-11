@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -59,7 +59,7 @@
             width: 100%;
             height: 100%;
             border: 4px solid #e2e8f0;
-            border-top-color: #3b82f6;
+            border-top-color: #4e73df;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -80,7 +80,7 @@
         .wifi-icon svg {
             width: 35px;
             height: 35px;
-            fill: #3b82f6;
+            fill: #4e73df;
             animation: pulse 2s ease-in-out infinite;
         }
 
@@ -137,26 +137,6 @@
             }
         }
 
-        .manual-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-            text-decoration: none;
-        }
-
-        .manual-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-        }
-
         .info-text {
             color: #94a3b8;
             font-size: 13px;
@@ -192,26 +172,26 @@
             Mohon tunggu, kami sedang menghubungkan Anda ke internet<span class="dots"><span>.</span><span>.</span><span>.</span></span>
         </p>
 
-        <noscript>
-            <button class="manual-button" onclick="document.getElementById('mk').submit()">
-                Klik untuk Melanjutkan
-            </button>
-            <p class="info-text">JavaScript tidak aktif. Silakan klik tombol di atas.</p>
-        </noscript>
-
-        <form id="mk" method="post" action="http://login.bprcar.local/login" style="display: none;">
+        <!-- Form hidden untuk submit ke MikroTik -->
+        <iframe name="mikrotik_frame" style="display:none;"></iframe>
+        <form id="mk" method="post" action="http://login.bprcar.local/login" target="mikrotik_frame">
             <input type="hidden" name="username" value="{{ $username }}">
             <input type="hidden" name="password" value="{{ $password }}">
-            <input type="hidden" name="dst" value="{{ $dst ?? 'http://google.com' }}">
+            <input type="hidden" name="dst" value="{{ $dst }}">
             <input type="hidden" name="popup" value="true">
         </form>
 
-        <p class="info-text">Anda akan segera terhubung ke internet</p>
+        <p class="info-text">Anda akan segera terhubung...</p>
     </div>
 
     <script>
-        // Auto submit form setelah halaman dimuat
+        // Submit form ke MikroTik dalam iframe
         document.getElementById('mk').submit();
+        
+        // Setelah 2 detik, redirect ke dashboard
+        setTimeout(function() {
+            window.location.href = "{{ $dst }}";
+        }, 2000);
     </script>
 </body>
 </html>

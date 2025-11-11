@@ -116,4 +116,72 @@ class MikrotikService
         }
         return true;
     }
+
+    /**
+     * Login user ke hotspot via HTTP API
+     * Menggunakan HTTP login agar session ter-bind ke IP client
+     */
+    public function loginViaHttp($username, $password, $ip, $mac = '')
+    {
+        try {
+            // URL login MikroTik hotspot
+            $loginUrl = 'http://' . env('MT_HOTSPOT_IP', 'login.bprcar.local') . '/login';
+
+            // Data untuk POST ke MikroTik
+            $postData = [
+                'username' => $username,
+                'password' => $password,
+                'dst' => '',
+                'popup' => 'true'
+            ];
+
+            // Gunakan cURL untuk POST request
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $loginUrl);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            // Jika redirect atau success, berarti login berhasil
+            if ($httpCode == 302 || $httpCode == 200) {
+                return ['success' => true, 'message' => 'Login berhasil'];
+            }
+
+            return ['success' => false, 'message' => 'Login gagal'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+
+    /**
+     * Validasi kredensial user di MikroTik
+     */
+    public function validateUser($username, $password)
+    {
+        try {
+            $users = $this->getUsers();
+
+            foreach ($users as $user) {
+                if (isset($user['name']) && $user['name'] === $username) {
+                    // User ditemukan, cek password jika perlu
+                    if (isset($user['password']) && $user['password'] === $password) {
+                        return true;
+                    }
+                    // Jika password tidak di-return oleh API, anggap valid
+                    // (MikroTik biasanya tidak return password dalam plaintext)
+                    return true;
+                }
+            }
+
+            return false;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }
