@@ -732,7 +732,7 @@
                                             Edit
                                         </a>
                                         <form method="POST" action="{{ route('admin.users.delete', $user['name']) }}"
-                                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus user {{ $user['name }}?')"
+                                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus user {{ $user['name'] }}?');"
                                               style="display: inline;">
                                             @csrf
                                             @method('DELETE')
