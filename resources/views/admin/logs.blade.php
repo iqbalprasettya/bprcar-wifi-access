@@ -399,34 +399,39 @@
         .filters-container {
             background: white;
             border-radius: 10px;
-            padding: 25px;
+            padding: 15px;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             margin-bottom: 20px;
             animation: slideUp 0.6s ease-out 0.5s both;
         }
 
         .filters-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 15px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            min-width: 140px;
+            flex: 1;
         }
 
         .filter-group label {
             display: block;
             color: #5a5c69;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .filter-group select,
         .filter-group input[type="text"] {
             width: 100%;
-            padding: 12px 15px;
+            padding: 8px 12px;
             border: 2px solid #e3e8ef;
-            border-radius: 10px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 13px;
             transition: all 0.3s ease;
             background: #f8f9fc;
             font-weight: 500;
@@ -437,24 +442,19 @@
             outline: none;
             border-color: #4e73df;
             background: white;
-            box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .filter-actions {
-            display: flex;
-            gap: 10px;
+            box-shadow: 0 0 0 2px rgba(78, 115, 223, 0.1);
         }
 
         .btn {
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: inline-block;
+            white-space: nowrap;
         }
 
         .btn-primary {
@@ -681,7 +681,18 @@
             }
 
             .filters-row {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .filter-group {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                margin-top: 5px;
             }
 
             table {
@@ -839,28 +850,20 @@
                         <label>Action</label>
                         <select name="action" onchange="this.form.submit()">
                             <option value="all" {{ $action == 'all' ? 'selected' : '' }}>Semua Action</option>
-                            <option value="login_attempt" {{ $action == 'login_attempt' ? 'selected' : '' }}>Login
-                                Attempt</option>
-                            <option value="login_success" {{ $action == 'login_success' ? 'selected' : '' }}>Login
-                                Success</option>
-                            <option value="login_failed" {{ $action == 'login_failed' ? 'selected' : '' }}>Login
-                                Failed
-                            </option>
+                            <option value="login_attempt" {{ $action == 'login_attempt' ? 'selected' : '' }}>Login Attempt</option>
+                            <option value="login_success" {{ $action == 'login_success' ? 'selected' : '' }}>Login Success</option>
+                            <option value="login_failed" {{ $action == 'login_failed' ? 'selected' : '' }}>Login Failed</option>
                             <option value="logout" {{ $action == 'logout' ? 'selected' : '' }}>Logout</option>
-                            <option value="view_dashboard" {{ $action == 'view_dashboard' ? 'selected' : '' }}>
-                                View
-                                Dashboard</option>
+                            <option value="view_dashboard" {{ $action == 'view_dashboard' ? 'selected' : '' }}>View Dashboard</option>
                         </select>
                     </div>
 
                     <div class="filter-group">
-                        <label>Search (Username/IP/MAC)</label>
-                        <input type="text" name="search" value="{{ $search }}" placeholder="Cari...">
+                        <label>Search</label>
+                        <input type="text" name="search" value="{{ $search }}" placeholder="Username/IP/MAC">
                     </div>
 
-                    <div class="filter-group" style="display: flex; align-items: flex-end;">
-                        <button type="submit" class="btn btn-primary">Filter</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Filter</button>
                 </div>
             </form>
         </div>
