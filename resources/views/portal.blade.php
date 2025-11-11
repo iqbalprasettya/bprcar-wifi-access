@@ -121,18 +121,18 @@
         }
 
         .container {
-            max-width: 480px;
-            margin: -100px auto 50px;
+            max-width: 440px;
+            margin: -80px auto 50px;
             padding: 0 20px;
             position: relative;
             z-index: 10;
-            animation: slideUp 0.8s ease-out 0.3s both;
+            animation: slideUp 0.6s ease-out 0.2s both;
         }
 
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
 
             to {
@@ -142,112 +142,85 @@
         }
 
         .login-card {
-            background: transparent;
-            padding: 0;
+            background: white;
+            padding: 45px 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            color: #858796;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            text-align: center;
+            color: #5a5c69;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 18px 24px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 14px 18px;
+            border: 2px solid #e3e6f0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            background: #f8f9fc;
+            color: #5a5c69;
         }
 
         input[type="text"]::placeholder,
         input[type="password"]::placeholder {
-            color: #9ca3af;
+            color: #b7b9cc;
         }
 
         input[type="text"]:focus,
         input[type="password"]:focus {
             outline: none;
-            border-color: rgba(255, 255, 255, 0.8);
+            border-color: #4e73df;
             background: white;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
+            box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.1);
         }
 
         button[type="submit"] {
             width: 100%;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            color: #4e73df;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            margin-top: 15px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        button[type="submit"]::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            padding: 16px;
             background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        button[type="submit"]:hover::before {
-            opacity: 1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(78, 115, 223, 0.25);
+            margin-top: 25px;
         }
 
         button[type="submit"]:hover {
-            color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(78, 115, 223, 0.35);
         }
 
         button[type="submit"]:active {
             transform: translateY(0);
-        }
-
-        button[type="submit"] span {
-            position: relative;
-            z-index: 1;
+            box-shadow: 0 2px 8px rgba(78, 115, 223, 0.25);
         }
 
         .error-message {
-            background: rgba(239, 68, 68, 0.95);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            color: #991b1b;
             padding: 14px 18px;
-            border-radius: 12px;
+            border-radius: 8px;
             margin-top: 20px;
             font-size: 14px;
             animation: shake 0.5s;
-            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
         }
 
         @keyframes shake {
@@ -284,10 +257,9 @@
 
         .footer-text {
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            margin-top: 30px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            color: #858796;
+            font-size: 12px;
+            margin-top: 25px;
         }
 
         /* Responsive */
@@ -314,11 +286,11 @@
             }
 
             .container {
-                margin-top: -80px;
+                margin-top: -70px;
             }
 
             .login-card {
-                padding: 30px 25px;
+                padding: 35px 30px;
             }
         }
 
@@ -332,6 +304,25 @@
             }
 
             .header-content p {
+                font-size: 15px;
+            }
+
+            .login-card {
+                padding: 30px 25px;
+            }
+
+            .form-group label {
+                font-size: 12px;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+
+            button[type="submit"] {
+                padding: 14px;
                 font-size: 15px;
             }
         }
@@ -379,7 +370,7 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
 
-                <button type="submit"><span>Sign In</span></button>
+                <button type="submit">Sign In</button>
             </form>
 
             @if ($errors->any())
