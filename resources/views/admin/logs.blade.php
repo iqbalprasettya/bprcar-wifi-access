@@ -148,7 +148,7 @@
             z-index: 10;
             padding: 50px 20px 20px;
             color: white;
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -258,7 +258,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: -80px auto 50px;
             padding: 0 20px;
             position: relative;
@@ -741,236 +741,236 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <!-- Stats Cards -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-label">Total Logs</div>
-                        <div class="stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M5.507 4.048A3 3 0 017.785 3h8.43a3 3 0 012.278 1.048l1.722 2.008A4.533 4.533 0 0119.5 6h-15c-.243 0-.482.02-.715.056l1.722-2.008z" />
-                                <path fill-rule="evenodd"
-                                    d="M1.5 10.5a3 3 0 013-3h15a3 3 0 110 6h-15a3 3 0 01-3-3zM15.75 17.25v-4.5H18a2.25 2.25 0 002.25-2.25V9.75A2.25 2.25 0 0018 7.5h-2.25v4.5H12v-4.5H9.75v4.5H6v-4.5H3.75v4.5H1.5V21a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 21v-3.75h-6z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
+    <div class="container">
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-label">Total Logs</div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M5.507 4.048A3 3 0 017.785 3h8.43a3 3 0 012.278 1.048l1.722 2.008A4.533 4.533 0 0119.5 6h-15c-.243 0-.482.02-.715.056l1.722-2.008z" />
+                            <path fill-rule="evenodd"
+                                d="M1.5 10.5a3 3 0 013-3h15a3 3 0 110 6h-15a3 3 0 01-3-3zM15.75 17.25v-4.5H18a2.25 2.25 0 002.25-2.25V9.75A2.25 2.25 0 0018 7.5h-2.25v4.5H12v-4.5H9.75v4.5H6v-4.5H3.75v4.5H1.5V21a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 21v-3.75h-6z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </div>
-                    <div class="stat-value">{{ number_format($stats['total_logs']) }}</div>
                 </div>
-                <div class="stat-card green">
-                    <div class="stat-header">
-                        <div class="stat-label">Login Success</div>
-                        <div class="stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="stat-value">{{ number_format($stats['total_logins']) }}</div>
-                </div>
-                <div class="stat-card red">
-                    <div class="stat-header">
-                        <div class="stat-label">Login Failed</div>
-                        <div class="stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="stat-value">{{ number_format($stats['total_failed']) }}</div>
-                </div>
-                <div class="stat-card cyan">
-                    <div class="stat-header">
-                        <div class="stat-label">Unique Users</div>
-                        <div class="stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="stat-value">{{ number_format($stats['unique_users']) }}</div>
-                </div>
-                <div class="stat-card orange">
-                    <div class="stat-header">
-                        <div class="stat-label">Total Traffic</div>
-                        <div class="stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 101.061 1.06l8.69-8.69z" />
-                                <path
-                                    d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="stat-value" style="font-size: 20px;">
-                        {{ number_format($stats['total_traffic'] / 1024 / 1024, 2) }} MB</div>
-                </div>
+                <div class="stat-value">{{ number_format($stats['total_logs']) }}</div>
             </div>
-
-            <!-- Filters -->
-            <div class="filters-container">
-                <form method="GET" action="{{ route('admin.logs') }}">
-                    <div class="filters-row">
-                        <div class="filter-group">
-                            <label>Periode</label>
-                            <select name="filter" onchange="this.form.submit()">
-                                <option value="all" {{ $filter == 'all' ? 'selected' : '' }}>Semua</option>
-                                <option value="today" {{ $filter == 'today' ? 'selected' : '' }}>Hari Ini</option>
-                                <option value="week" {{ $filter == 'week' ? 'selected' : '' }}>Minggu Ini</option>
-                                <option value="month" {{ $filter == 'month' ? 'selected' : '' }}>Bulan Ini</option>
-                            </select>
-                        </div>
-
-                        <div class="filter-group">
-                            <label>Action</label>
-                            <select name="action" onchange="this.form.submit()">
-                                <option value="all" {{ $action == 'all' ? 'selected' : '' }}>Semua Action</option>
-                                <option value="login_attempt" {{ $action == 'login_attempt' ? 'selected' : '' }}>Login
-                                    Attempt</option>
-                                <option value="login_success" {{ $action == 'login_success' ? 'selected' : '' }}>Login
-                                    Success</option>
-                                <option value="login_failed" {{ $action == 'login_failed' ? 'selected' : '' }}>Login
-                                    Failed
-                                </option>
-                                <option value="logout" {{ $action == 'logout' ? 'selected' : '' }}>Logout</option>
-                                <option value="view_dashboard" {{ $action == 'view_dashboard' ? 'selected' : '' }}>
-                                    View
-                                    Dashboard</option>
-                            </select>
-                        </div>
-
-                        <div class="filter-group">
-                            <label>Search (Username/IP/MAC)</label>
-                            <input type="text" name="search" value="{{ $search }}" placeholder="Cari...">
-                        </div>
-
-                        <div class="filter-group" style="display: flex; align-items: flex-end;">
-                            <button type="submit" class="btn btn-primary">Filter</button>
-                        </div>
+            <div class="stat-card green">
+                <div class="stat-header">
+                    <div class="stat-label">Login Success</div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </div>
-                </form>
+                </div>
+                <div class="stat-value">{{ number_format($stats['total_logins']) }}</div>
             </div>
+            <div class="stat-card red">
+                <div class="stat-header">
+                    <div class="stat-label">Login Failed</div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="stat-value">{{ number_format($stats['total_failed']) }}</div>
+            </div>
+            <div class="stat-card cyan">
+                <div class="stat-header">
+                    <div class="stat-label">Unique Users</div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="stat-value">{{ number_format($stats['unique_users']) }}</div>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-header">
+                    <div class="stat-label">Total Traffic</div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 101.061 1.06l8.69-8.69z" />
+                            <path
+                                d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="stat-value" style="font-size: 20px;">
+                    {{ number_format($stats['total_traffic'] / 1024 / 1024, 2) }} MB</div>
+            </div>
+        </div>
 
-            <!-- Logs Table -->
-            <div class="logs-container">
-                <div class="logs-table-wrapper">
-                    <table>
-                        <thead>
+        <!-- Filters -->
+        <div class="filters-container">
+            <form method="GET" action="{{ route('admin.logs') }}">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label>Periode</label>
+                        <select name="filter" onchange="this.form.submit()">
+                            <option value="all" {{ $filter == 'all' ? 'selected' : '' }}>Semua</option>
+                            <option value="today" {{ $filter == 'today' ? 'selected' : '' }}>Hari Ini</option>
+                            <option value="week" {{ $filter == 'week' ? 'selected' : '' }}>Minggu Ini</option>
+                            <option value="month" {{ $filter == 'month' ? 'selected' : '' }}>Bulan Ini</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Action</label>
+                        <select name="action" onchange="this.form.submit()">
+                            <option value="all" {{ $action == 'all' ? 'selected' : '' }}>Semua Action</option>
+                            <option value="login_attempt" {{ $action == 'login_attempt' ? 'selected' : '' }}>Login
+                                Attempt</option>
+                            <option value="login_success" {{ $action == 'login_success' ? 'selected' : '' }}>Login
+                                Success</option>
+                            <option value="login_failed" {{ $action == 'login_failed' ? 'selected' : '' }}>Login
+                                Failed
+                            </option>
+                            <option value="logout" {{ $action == 'logout' ? 'selected' : '' }}>Logout</option>
+                            <option value="view_dashboard" {{ $action == 'view_dashboard' ? 'selected' : '' }}>
+                                View
+                                Dashboard</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Search (Username/IP/MAC)</label>
+                        <input type="text" name="search" value="{{ $search }}" placeholder="Cari...">
+                    </div>
+
+                    <div class="filter-group" style="display: flex; align-items: flex-end;">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Logs Table -->
+        <div class="logs-container">
+            <div class="logs-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Waktu</th>
+                            <th>Username</th>
+                            <th>Action</th>
+                            <th>IP Address</th>
+                            <th>Device</th>
+                            <th>Status</th>
+                            <th>Traffic</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($logs as $log)
                             <tr>
-                                <th>Waktu</th>
-                                <th>Username</th>
-                                <th>Action</th>
-                                <th>IP Address</th>
-                                <th>Device</th>
-                                <th>Status</th>
-                                <th>Traffic</th>
-                                <th>Duration</th>
+                                <td>
+                                    <div class="text-bold">{{ $log->created_at->format('d M Y') }}</div>
+                                    <div class="text-muted">{{ $log->created_at->format('H:i:s') }}</div>
+                                </td>
+                                <td>
+                                    <div class="text-bold">{{ $log->username }}</div>
+                                    @if ($log->mac_address)
+                                        <div class="text-muted">{{ $log->mac_address }}</div>
+                                    @endif
+                                </td>
+                                <td>
+                                    @php
+                                        $badgeClass = 'badge-info';
+                                        if ($log->action == 'login_success') {
+                                            $badgeClass = 'badge-success';
+                                        } elseif ($log->action == 'login_failed') {
+                                            $badgeClass = 'badge-danger';
+                                        } elseif ($log->action == 'logout') {
+                                            $badgeClass = 'badge-warning';
+                                        }
+                                    @endphp
+                                    <span
+                                        class="badge {{ $badgeClass }}">{{ str_replace('_', ' ', $log->action) }}</span>
+                                </td>
+                                <td class="text-muted">{{ $log->ip_address }}</td>
+                                <td>
+                                    @if ($log->device_type)
+                                        <div class="text-bold">{{ ucfirst($log->device_type) }}</div>
+                                    @endif
+                                    @if ($log->browser)
+                                        <div class="text-muted" style="font-size: 12px;">{{ $log->browser }}
+                                        </div>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($log->status == 'success')
+                                        <span class="badge badge-success">{{ $log->status }}</span>
+                                    @elseif($log->status == 'failed')
+                                        <span class="badge badge-danger">{{ $log->status }}</span>
+                                    @else
+                                        <span class="badge badge-info">{{ $log->status }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($log->bytes_in > 0 || $log->bytes_out > 0)
+                                        <div class="text-muted" style="font-size: 12px;">
+                                            ↓ {{ $log->formatted_bytes_in }}<br>
+                                            ↑ {{ $log->formatted_bytes_out }}
+                                        </div>
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($log->session_duration)
+                                        <span class="text-muted">{{ $log->formatted_duration }}</span>
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($logs as $log)
-                                <tr>
-                                    <td>
-                                        <div class="text-bold">{{ $log->created_at->format('d M Y') }}</div>
-                                        <div class="text-muted">{{ $log->created_at->format('H:i:s') }}</div>
-                                    </td>
-                                    <td>
-                                        <div class="text-bold">{{ $log->username }}</div>
-                                        @if ($log->mac_address)
-                                            <div class="text-muted">{{ $log->mac_address }}</div>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @php
-                                            $badgeClass = 'badge-info';
-                                            if ($log->action == 'login_success') {
-                                                $badgeClass = 'badge-success';
-                                            } elseif ($log->action == 'login_failed') {
-                                                $badgeClass = 'badge-danger';
-                                            } elseif ($log->action == 'logout') {
-                                                $badgeClass = 'badge-warning';
-                                            }
-                                        @endphp
-                                        <span
-                                            class="badge {{ $badgeClass }}">{{ str_replace('_', ' ', $log->action) }}</span>
-                                    </td>
-                                    <td class="text-muted">{{ $log->ip_address }}</td>
-                                    <td>
-                                        @if ($log->device_type)
-                                            <div class="text-bold">{{ ucfirst($log->device_type) }}</div>
-                                        @endif
-                                        @if ($log->browser)
-                                            <div class="text-muted" style="font-size: 12px;">{{ $log->browser }}
-                                            </div>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($log->status == 'success')
-                                            <span class="badge badge-success">{{ $log->status }}</span>
-                                        @elseif($log->status == 'failed')
-                                            <span class="badge badge-danger">{{ $log->status }}</span>
-                                        @else
-                                            <span class="badge badge-info">{{ $log->status }}</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($log->bytes_in > 0 || $log->bytes_out > 0)
-                                            <div class="text-muted" style="font-size: 12px;">
-                                                ↓ {{ $log->formatted_bytes_in }}<br>
-                                                ↑ {{ $log->formatted_bytes_out }}
-                                            </div>
-                                        @else
-                                            <span class="text-muted">-</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($log->session_duration)
-                                            <span class="text-muted">{{ $log->formatted_duration }}</span>
-                                        @else
-                                            <span class="text-muted">-</span>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="8" style="text-align: center; padding: 40px; color: #858796;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor"
-                                            style="width: 48px; height: 48px; margin: 0 auto 10px; opacity: 0.5;">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                                        </svg>
-                                        <div style="font-size: 16px; font-weight: 600; margin-bottom: 5px;">Tidak ada
-                                            data
-                                            log</div>
-                                        <div style="font-size: 14px;">Coba ubah filter atau search Anda</div>
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-
-                @if ($logs->hasPages())
-                    <div class="pagination-container">
-                        <div class="pagination-info">
-                            Menampilkan {{ $logs->firstItem() }} - {{ $logs->lastItem() }} dari {{ $logs->total() }}
-                            data
-                        </div>
-                        <div class="pagination-links">
-                            {{ $logs->links('pagination::simple-default') }}
-                        </div>
-                    </div>
-                @endif
+                        @empty
+                            <tr>
+                                <td colspan="8" style="text-align: center; padding: 40px; color: #858796;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor"
+                                        style="width: 48px; height: 48px; margin: 0 auto 10px; opacity: 0.5;">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                    </svg>
+                                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 5px;">Tidak ada
+                                        data
+                                        log</div>
+                                    <div style="font-size: 14px;">Coba ubah filter atau search Anda</div>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
+
+            @if ($logs->hasPages())
+                <div class="pagination-container">
+                    <div class="pagination-info">
+                        Menampilkan {{ $logs->firstItem() }} - {{ $logs->lastItem() }} dari {{ $logs->total() }}
+                        data
+                    </div>
+                    <div class="pagination-links">
+                        {{ $logs->links('pagination::simple-default') }}
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </body>
