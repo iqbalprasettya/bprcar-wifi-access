@@ -162,14 +162,21 @@ class AdminController extends Controller
     /**
      * Kick user dari active session
      */
-    public function kickUser(Request $request, $ip)
+    public function kickUser(Request $request, $username)
     {
         try {
             $mikrotik = app(\App\Services\MikrotikService::class);
-            $mikrotik->kickByIp($ip);
+            $result = $mikrotik->kickUser($username);
 
-            return redirect()->route('admin.active-users')
-                ->with('success', "User dengan IP {$ip} berhasil di-kick");
+            if ($result['success']) {
+                // Log the kick action
+                $this->logService->logKick($username, $request->ip(), $request->userAgent());
+
+                return redirect()->route('admin.active-users')
+                    ->with('success', $result['message']);
+            } else {
+                return back()->with('error', $result['message']);
+            }
         } catch (\Exception $e) {
             return back()->with('error', 'Gagal kick user: ' . $e->getMessage());
         }

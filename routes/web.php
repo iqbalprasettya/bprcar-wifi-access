@@ -22,7 +22,7 @@ Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.lo
 // Route admin logs & monitoring (protected)
 Route::get('/admin/logs', [AdminController::class, 'logs'])->name('admin.logs')->middleware('admin.auth');
 Route::get('/admin/active-users', [AdminController::class, 'activeUsers'])->name('admin.active-users')->middleware('admin.auth');
-Route::post('/admin/kick-user/{ip}', [AdminController::class, 'kickUser'])->name('admin.kick-user')->middleware('admin.auth');
+Route::post('/admin/kick-user/{username}', [AdminController::class, 'kickUser'])->name('admin.kick-user')->middleware('admin.auth');
 
 // Route admin hotspot management
 Route::get('/admin/hotspot/users', [HotspotAdminController::class, 'index']);

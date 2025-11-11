@@ -174,6 +174,25 @@ class HotspotLogService
     }
 
     /**
+     * Log admin kick action
+     */
+    public function logKick($username, $ip, $userAgent = null)
+    {
+        $deviceInfo = $this->parseUserAgent($userAgent ?? request()->userAgent());
+
+        return HotspotLog::create([
+            'username' => $username,
+            'ip_address' => $ip,
+            'action' => 'admin_kick',
+            'status' => 'success',
+            'user_agent' => $userAgent ?? request()->userAgent(),
+            'device_type' => $deviceInfo['device_type'],
+            'browser' => $deviceInfo['browser'],
+            'platform' => $deviceInfo['platform']
+        ]);
+    }
+
+    /**
      * Log dashboard view
      */
     public function logDashboardView($username, $ip, $mac = '', $userAgent = null)
