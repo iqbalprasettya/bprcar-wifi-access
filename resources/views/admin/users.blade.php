@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Active Users - Admin BPR CAR</title>
+    <title>User Management - Admin BPR CAR</title>
     <style>
         * {
             margin: 0;
@@ -217,25 +217,6 @@
             margin: 0;
         }
 
-        .header-right {
-            flex: 1;
-            text-align: right;
-            animation: fadeInRight 0.8s ease-out;
-        }
-
-        .welcome-text {
-            font-size: 15px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-
-        .username-display {
-            font-size: 28px;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            margin: 0;
-        }
-
         .nav-btn,
         .logout-btn {
             display: inline-flex;
@@ -301,74 +282,71 @@
             z-index: 10;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .stat-card {
+        .actions-bar {
             background: white;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid #4e73df;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
             animation: slideUp 0.6s ease-out both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .stat-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            gap: 15px;
         }
 
-        .stat-label {
-            color: #5a5c69;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .stat-icon {
-            width: 35px;
-            height: 35px;
-            display: flex;
+        .btn-create {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #1cc88a 0%, #13855c 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            color: #dddfeb;
+            gap: 8px;
         }
 
-        .stat-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
+        .btn-create:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(28, 200, 138, 0.4);
         }
 
-        .stat-value {
-            color: #5a5c69;
-            font-size: 24px;
-            font-weight: 700;
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 2px solid #e3e6f0;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f8f9fc;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #4e73df;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.1);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            color: #858796;
         }
 
         /* Users Table */
@@ -419,58 +397,56 @@
             font-size: 14px;
         }
 
-        .user-name-cell {
+        .username-cell {
             font-weight: 700;
             color: #5a5c69;
         }
 
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        .profile-badge {
+            display: inline-block;
             padding: 4px 12px;
-            background: #d1fae5;
-            color: #065f46;
-            border-radius: 20px;
+            background: #e3f2fd;
+            color: #1565c0;
+            border-radius: 12px;
             font-size: 12px;
             font-weight: 600;
         }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+        .actions-cell {
+            display: flex;
+            gap: 8px;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(1.1);
-            }
-        }
-
-        .btn-kick {
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #e74a3b 0%, #e02424 100%);
-            color: white;
+        .btn-action {
+            padding: 6px 12px;
             border: none;
-            border-radius: 8px;
-            font-size: 13px;
+            border-radius: 6px;
+            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(231, 74, 59, 0.25);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .btn-kick:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(231, 74, 59, 0.35);
+        .btn-edit {
+            background: #f6c23e;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #f0b90b;
+        }
+
+        .btn-delete {
+            background: #e74a3b;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
         }
 
         .empty-state {
@@ -515,6 +491,18 @@
             background: #fee2e2;
             border-left: 4px solid #ef4444;
             color: #991b1b;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 768px) {
@@ -567,21 +555,13 @@
                 padding: 0 15px;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .actions-bar {
+                flex-direction: column;
                 gap: 15px;
             }
 
-            .stat-card {
-                padding: 15px;
-            }
-
-            .stat-value {
-                font-size: 20px;
-            }
-
-            .stat-label {
-                font-size: 10px;
+            .search-box {
+                max-width: 100%;
             }
 
             .users-table-wrapper {
@@ -593,9 +573,14 @@
                 padding: 10px 8px;
             }
 
-            .btn-kick {
-                font-size: 12px;
-                padding: 6px 12px;
+            .btn-action {
+                font-size: 11px;
+                padding: 4px 8px;
+            }
+
+            .actions-cell {
+                flex-direction: column;
+                gap: 5px;
             }
         }
     </style>
@@ -629,15 +614,23 @@
             <div class="header-left">
                 <div class="status-badge">
                     <span class="status-dot-header"></span>
-                    Active Users
+                    User Management
                 </div>
-                <h1>Users Monitor</h1>
-                <p>Real-time monitoring user yang sedang terhubung</p>
+                <h1>Kelola Akun Hotspot</h1>
+                <p>Manajemen user dan profile hotspot</p>
             </div>
             <div class="header-right">
                 <p class="welcome-text">Selamat datang kembali,</p>
                 <div class="username-display">{{ Auth::user()->name }}</div>
                 <div style="gap: 10px; margin-top: 15px;">
+                    <a href="{{ route('admin.active-users') }}" class="nav-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            style="width: 16px; height: 16px;">
+                            <path
+                                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+                        </svg>
+                        Active Users
+                    </a>
                     <a href="{{ route('admin.logs') }}" class="nav-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             style="width: 16px; height: 16px;">
@@ -668,33 +661,6 @@
     </div>
 
     <div class="container">
-        <!-- Stats Cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-label">Total Active</div>
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="stat-value">{{ count($activeUsers) }}</div>
-            </div>
-            <div class="stat-card cyan" style="cursor: pointer;" onclick="window.location.href='{{ route('admin.users') }}'">
-                <div class="stat-header">
-                    <div class="stat-label">User Management</div>
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="stat-value" style="font-size: 14px;">Kelola Akun</div>
-            </div>
-        </div>
-
         <!-- Alerts -->
         @if (session('success'))
             <div class="alert alert-success">
@@ -714,59 +680,67 @@
             </div>
         @endif
 
+        <!-- Actions Bar -->
+        <div class="actions-bar">
+            <a href="{{ route('admin.users.create') }}" class="btn-create">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v7.5a.75.75 0 01-1.5 0v-7.5a.75.75 0 01.75-.75zM12.75 8.25a.75.75 0 00-.75.75v7.5h7.5a.75.75 0 000-1.5h-7.5z" clip-rule="evenodd" />
+                </svg>
+                Tambah User Baru
+            </a>
+
+            <div class="search-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                    <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.16 5.614l5.378 5.377a1 1 0 001.415-1.414l-5.377-5.378a8.25 8.25 0 01-11.576 0z" clip-rule="evenodd" />
+                </svg>
+                <input type="text" placeholder="Cari user..." id="searchInput" onkeyup="searchUsers()">
+            </div>
+        </div>
+
         <!-- Users Table -->
         <div class="users-container">
-            @if (count($activeUsers) > 0)
+            @if (count($users) > 0)
                 <div class="users-table-wrapper">
-                    <table>
+                    <table id="usersTable">
                         <thead>
                             <tr>
-                                <th>User</th>
-                                <th>IP Address</th>
-                                <th>MAC Address</th>
-                                <th>Uptime</th>
-                                <th>Download</th>
-                                <th>Upload</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Username</th>
+                                <th>Profile</th>
+                                <th>Disabled</th>
+                                <th>Uptime Limit</th>
+                                <th>Bytes In</th>
+                                <th>Bytes Out</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($activeUsers as $user)
-                                <tr>
-                                    <td class="user-name-cell">
-                                        {{ $user['user'] ?? 'Unknown' }}
-                                    </td>
-                                    <td>{{ $user['address'] ?? '-' }}</td>
-                                    <td>{{ $user['mac-address'] ?? '-' }}</td>
-                                    <td>{{ $user['uptime'] ?? '-' }}</td>
+                            @foreach ($users as $user)
+                                <tr data-user="{{ strtolower($user['name'] ?? '') }}">
+                                    <td class="username-cell">{{ $user['name'] ?? '-' }}</td>
                                     <td>
-                                        @php
-                                            $bytesIn = $user['bytes-in'] ?? 0;
-                                            $mb = $bytesIn / 1024 / 1024;
-                                            echo number_format($mb, 2) . ' MB';
-                                        @endphp
+                                        <span class="profile-badge">{{ $user['profile'] ?? 'default' }}</span>
                                     </td>
-                                    <td>
-                                        @php
-                                            $bytesOut = $user['bytes-out'] ?? 0;
-                                            $mb = $bytesOut / 1024 / 1024;
-                                            echo number_format($mb, 2) . ' MB';
-                                        @endphp
-                                    </td>
-                                    <td>
-                                        <div class="status-badge">
-                                            <span class="status-dot"></span>
-                                            Online
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <form method="POST" action="{{ route('admin.kick-user', $user['user']) }}"
-                                            style="display: inline;">
+                                    <td>{{ $user['disabled'] ?? 'No' }}</td>
+                                    <td>{{ $user['uptime-limit'] ?? 'unlimited' }}</td>
+                                    <td>{{ $user['bytes-in'] ?? 0 }}</td>
+                                    <td>{{ $user['bytes-out'] ?? 0 }}</td>
+                                    <td class="actions-cell">
+                                        <a href="{{ route('admin.users.edit', $user['name']) }}" class="btn-action btn-edit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px;">
+                                                <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652-2.652L10.582 9.07a1.875 1.875 0 01-2.652 0L3.51 13.225a1.875 1.875 0 012.652-2.652zm3.62 4.637a.75.75 0 001.06-1.061l-1.061-1.061a.75.75 0 00-1.061 1.06l1.06 1.061A.75.75 0 0018.824 19.875l1.06-1.06z" />
+                                            </svg>
+                                            Edit
+                                        </a>
+                                        <form method="POST" action="{{ route('admin.users.delete', $user['name']) }}"
+                                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus user {{ $user['name }}?')"
+                                              style="display: inline;">
                                             @csrf
-                                            <button type="submit" class="btn-kick"
-                                                onclick="return confirm('Yakin ingin kick user {{ $user['user'] }}?')">
-                                                Kick
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-action btn-delete">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px;">
+                                                    <path fill-rule="evenodd" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652-2.652L10.582 9.07a1.875 1.875 0 01-2.652 0L3.51 13.225a1.875 1.875 0 012.652-2.652zm3.62 4.637a.75.75 0 001.06-1.061l-1.061-1.061a.75.75 0 00-1.061 1.06l1.06 1.061A.75.75 0 0018.824 19.875l1.06-1.06z" />
+                                                </svg>
+                                                Hapus
                                             </button>
                                         </form>
                                     </td>
@@ -777,17 +751,34 @@
                 </div>
             @else
                 <div class="empty-state">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                     </svg>
-                    <h3>Tidak Ada User Online</h3>
-                    <p>Tidak ada user yang sedang terhubung saat ini</p>
+                    <h3>Tidak Ada User</h3>
+                    <p>Belum ada akun hotspot yang terdaftar</p>
                 </div>
             @endif
         </div>
     </div>
+
+    <script>
+        function searchUsers() {
+            const input = document.getElementById('searchInput');
+            const table = document.getElementById('usersTable');
+            const rows = table.getElementsByTagName('tr');
+            const filter = input.value.toLowerCase();
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const username = row.getAttribute('data-user');
+
+                if (username) {
+                    row.style.display = username.includes(filter) ? '' : 'none';
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>

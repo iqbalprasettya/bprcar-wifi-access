@@ -24,6 +24,14 @@ Route::get('/admin/logs', [AdminController::class, 'logs'])->name('admin.logs')-
 Route::get('/admin/active-users', [AdminController::class, 'activeUsers'])->name('admin.active-users')->middleware('admin.auth');
 Route::post('/admin/kick-user/{username}', [AdminController::class, 'kickUser'])->name('admin.kick-user')->middleware('admin.auth');
 
+// Route admin user management
+Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users')->middleware('admin.auth');
+Route::get('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create')->middleware('admin.auth');
+Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.users.store')->middleware('admin.auth');
+Route::get('/admin/users/{username}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit')->middleware('admin.auth');
+Route::put('/admin/users/{username}', [AdminController::class, 'updateUser'])->name('admin.users.update')->middleware('admin.auth');
+Route::delete('/admin/users/{username}', [AdminController::class, 'deleteUser'])->name('admin.users.delete')->middleware('admin.auth');
+
 // Route admin hotspot management
 Route::get('/admin/hotspot/users', [HotspotAdminController::class, 'index']);
 Route::post('/admin/hotspot/users', [HotspotAdminController::class, 'store']);

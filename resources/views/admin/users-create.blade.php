@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Active Users - Admin BPR CAR</title>
+    <title>Tambah User - Admin BPR CAR</title>
     <style>
         * {
             margin: 0;
@@ -217,25 +217,6 @@
             margin: 0;
         }
 
-        .header-right {
-            flex: 1;
-            text-align: right;
-            animation: fadeInRight 0.8s ease-out;
-        }
-
-        .welcome-text {
-            font-size: 15px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-
-        .username-display {
-            font-size: 28px;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            margin: 0;
-        }
-
         .nav-btn,
         .logout-btn {
             display: inline-flex;
@@ -294,27 +275,18 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 500px;
             margin: -80px auto 50px;
             padding: 0 20px;
             position: relative;
             z-index: 10;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .stat-card {
+        .form-container {
             background: white;
             border-radius: 10px;
-            padding: 20px;
+            padding: 40px;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid #4e73df;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: slideUp 0.6s ease-out both;
         }
 
@@ -330,171 +302,130 @@
             }
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: #5a5c69;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .stat-icon {
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #dddfeb;
-        }
-
-        .stat-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        .stat-value {
+        .form-header h1 {
             color: #5a5c69;
             font-size: 24px;
             font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        /* Users Table */
-        .users-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            animation: slideUp 0.6s ease-out 0.5s both;
-        }
-
-        .users-table-wrapper {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        thead {
-            background: #f8f9fc;
-        }
-
-        th {
-            padding: 15px 12px;
-            text-align: left;
-            color: #5a5c69;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid #e3e6f0;
-        }
-
-        tbody tr {
-            border-bottom: 1px solid #e3e6f0;
-            transition: background 0.3s ease;
-        }
-
-        tbody tr:hover {
-            background: #f8f9fc;
-        }
-
-        td {
-            padding: 14px 12px;
-            color: #5a5c69;
+        .form-header p {
+            color: #858796;
             font-size: 14px;
         }
 
-        .user-name-cell {
-            font-weight: 700;
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
             color: #5a5c69;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
-            background: #d1fae5;
-            color: #065f46;
-            border-radius: 20px;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(1.1);
-            }
-        }
-
-        .btn-kick {
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #e74a3b 0%, #e02424 100%);
-            color: white;
-            border: none;
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e3e6f0;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fc;
+            color: #5a5c69;
+            font-weight: 500;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4e73df;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            font-size: 12px;
+            height: 4px;
+            background: #f1f1f1;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .password-strength.weak .password-strength-bar {
+            width: 33%;
+            background: #ef4444;
+        }
+
+        .password-strength.medium .password-strength-bar {
+            width: 66%;
+            background: #f59e0b;
+        }
+
+        .password-strength.strong .password-strength-bar {
+            width: 100%;
+            background: #10b981;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(231, 74, 59, 0.25);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .btn-kick:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(231, 74, 59, 0.35);
+        .btn-primary {
+            background: linear-gradient(135deg, #1cc88a 0%, #13855c 100%);
+            color: white;
+            border: none;
+            flex: 1;
+            box-shadow: 0 2px 10px rgba(28, 200, 138, 0.3);
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(28, 200, 138, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
             color: #858796;
+            border: 2px solid #e3e6f0;
+            flex: 0.5;
         }
 
-        .empty-state svg {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            opacity: 0.5;
-        }
-
-        .empty-state h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #5a5c69;
-        }
-
-        .empty-state p {
-            font-size: 15px;
+        .btn-secondary:hover {
+            border-color: #4e73df;
+            color: #4e73df;
         }
 
         .alert {
@@ -515,6 +446,16 @@
             background: #fee2e2;
             border-left: 4px solid #ef4444;
             color: #991b1b;
+        }
+
+        .form-info {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #0369a1;
         }
 
         @media (max-width: 768px) {
@@ -567,35 +508,16 @@
                 padding: 0 15px;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+            .form-container {
+                padding: 30px 20px;
             }
 
-            .stat-card {
-                padding: 15px;
-            }
-
-            .stat-value {
+            .form-header h1 {
                 font-size: 20px;
             }
 
-            .stat-label {
-                font-size: 10px;
-            }
-
-            .users-table-wrapper {
-                font-size: 13px;
-            }
-
-            th,
-            td {
-                padding: 10px 8px;
-            }
-
-            .btn-kick {
-                font-size: 12px;
-                padding: 6px 12px;
+            .form-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -629,26 +551,29 @@
             <div class="header-left">
                 <div class="status-badge">
                     <span class="status-dot-header"></span>
-                    Active Users
+                    Create User
                 </div>
-                <h1>Users Monitor</h1>
-                <p>Real-time monitoring user yang sedang terhubung</p>
+                <h1>Tambah User Baru</h1>
+                <p>Buat akun hotspot baru</p>
             </div>
             <div class="header-right">
                 <p class="welcome-text">Selamat datang kembali,</p>
                 <div class="username-display">{{ Auth::user()->name }}</div>
                 <div style="gap: 10px; margin-top: 15px;">
-                    <a href="{{ route('admin.logs') }}" class="nav-btn">
+                    <a href="{{ route('admin.users') }}" class="nav-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            style="width: 16px; height: 16px;">
+                            <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        User List
+                    </a>
+                    <a href="{{ route('admin.active-users') }}" class="nav-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             style="width: 16px; height: 16px;">
                             <path
-                                d="M11.644 1.59a.75.75 0 01.712 0l9.75 5.25a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.712 0l-9.75-5.25a.75.75 0 010-1.32l9.75-5.25z" />
-                            <path
-                                d="M3.265 10.602l7.668 4.129a2.25 2.25 0 002.134 0l7.668-4.13 1.37.739a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.71 0l-9.75-5.25a.75.75 0 010-1.32l1.37-.738z" />
-                            <path
-                                d="M10.933 19.231l-7.668-4.13-1.37.739a.75.75 0 000 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 000-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 01-2.134-.001z" />
+                                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
                         </svg>
-                        View Logs
+                        Active Users
                     </a>
                     <form method="POST" action="{{ route('admin.logout') }}" style="display: inline;">
                         @csrf
@@ -668,126 +593,128 @@
     </div>
 
     <div class="container">
-        <!-- Stats Cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-label">Total Active</div>
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="stat-value">{{ count($activeUsers) }}</div>
+        <div class="form-container">
+            <div class="form-header">
+                <h1>Form Tambah User</h1>
+                <p>Isi data untuk membuat akun hotspot baru</p>
             </div>
-            <div class="stat-card cyan" style="cursor: pointer;" onclick="window.location.href='{{ route('admin.users') }}'">
-                <div class="stat-header">
-                    <div class="stat-label">User Management</div>
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="stat-value" style="font-size: 14px;">Kelola Akun</div>
-            </div>
-        </div>
 
-        <!-- Alerts -->
-        @if (session('success'))
-            <div class="alert alert-success">
-                ✓ {{ session('success') }}
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert alert-error">
-                ✗ {{ session('error') }}
-            </div>
-        @endif
-
-        @if (isset($error))
-            <div class="alert alert-error">
-                ✗ {{ $error }}
-            </div>
-        @endif
-
-        <!-- Users Table -->
-        <div class="users-container">
-            @if (count($activeUsers) > 0)
-                <div class="users-table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>IP Address</th>
-                                <th>MAC Address</th>
-                                <th>Uptime</th>
-                                <th>Download</th>
-                                <th>Upload</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($activeUsers as $user)
-                                <tr>
-                                    <td class="user-name-cell">
-                                        {{ $user['user'] ?? 'Unknown' }}
-                                    </td>
-                                    <td>{{ $user['address'] ?? '-' }}</td>
-                                    <td>{{ $user['mac-address'] ?? '-' }}</td>
-                                    <td>{{ $user['uptime'] ?? '-' }}</td>
-                                    <td>
-                                        @php
-                                            $bytesIn = $user['bytes-in'] ?? 0;
-                                            $mb = $bytesIn / 1024 / 1024;
-                                            echo number_format($mb, 2) . ' MB';
-                                        @endphp
-                                    </td>
-                                    <td>
-                                        @php
-                                            $bytesOut = $user['bytes-out'] ?? 0;
-                                            $mb = $bytesOut / 1024 / 1024;
-                                            echo number_format($mb, 2) . ' MB';
-                                        @endphp
-                                    </td>
-                                    <td>
-                                        <div class="status-badge">
-                                            <span class="status-dot"></span>
-                                            Online
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <form method="POST" action="{{ route('admin.kick-user', $user['user']) }}"
-                                            style="display: inline;">
-                                            @csrf
-                                            <button type="submit" class="btn-kick"
-                                                onclick="return confirm('Yakin ingin kick user {{ $user['user'] }}?')">
-                                                Kick
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @else
-                <div class="empty-state">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-                    </svg>
-                    <h3>Tidak Ada User Online</h3>
-                    <p>Tidak ada user yang sedang terhubung saat ini</p>
+            @if ($errors->any())
+                <div class="alert alert-error">
+                    @foreach ($errors->all() as $error)
+                        <div>• {{ $error }}</div>
+                    @endforeach
                 </div>
             @endif
+
+            <div class="form-info">
+                💡 <strong>Info:</strong> Pastikan username unik dan password minimal 4 karakter
+            </div>
+
+            <form method="POST" action="{{ route('admin.users.store') }}">
+                @csrf
+
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value="{{ old('name') }}"
+                        placeholder="Masukkan username"
+                        required
+                        minlength="3"
+                        maxlength="32"
+                        pattern="[a-zA-Z0-9_-]+"
+                        title="Username hanya boleh berisi huruf, angka, underscore, dan dash"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Masukkan password"
+                        required
+                        minlength="4"
+                        maxlength="32"
+                        onkeyup="checkPasswordStrength(this.value)"
+                    >
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="password-strength-bar"></div>
+                    </div>
+                    <small id="passwordText" style="color: #858796; margin-top: 5px; font-size: 12px;"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="profile">Profile</label>
+                    <select id="profile" name="profile" required>
+                        @foreach ($profiles as $profile)
+                            <option value="{{ $profile['name'] ?? 'default' }}"
+                                {{ old('profile') == ($profile['name'] ?? 'default') ? 'selected' : '' }}>
+                                {{ $profile['name'] ?? 'default' }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <a href="{{ route('admin.users') }}" class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                            <path fill-rule="evenodd" d="M10.22 12.72a.75.75 0 0 0 0 1.06l-1.06 1.06L6.25 11.31 3.28 8.44a.75.75 0 0 1-1.06 1.06L2.22 6.28a.75.75 0 0 1 1.06 0l3.78 3.78 1.06-1.06L4.44 8.94l1.06-1.06L7.5 9.69l3.78 3.78 1.06-1.06L9.72 9.69 7.5 11.5 1.06-1.06l3.78-3.78zM12.47 14.53a.75.75 0 0 1 0 1.06L17.69 9.47a.75.75 0 0 1 0-1.06l-1.06 1.06L13.44 10.5l1.06-1.06L12.38 8.44a.75.75 0 0 1 0-1.06l-1.06 1.06l3.78 3.78z" clip-rule="evenodd" />
+                        </svg>
+                        Batal
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                            <path fill-rule="evenodd" d="M12 4.354a.75.75 0 01.75.75v7.5a.75.75 0 01-1.5 0v-7.5a.75.75 0 01.75-.75zM12.75 8.25a.75.75 0 00-.75.75v7.5h7.5a.75.75 0 000-1.5h-7.5z" clip-rule="evenodd" />
+                        </svg>
+                        Simpan User
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+
+    <script>
+        function checkPasswordStrength(password) {
+            const strengthBar = document.querySelector('.password-strength-bar');
+            const strengthText = document.getElementById('passwordText');
+            const strengthContainer = document.getElementById('passwordStrength');
+
+            let strength = 0;
+            let strengthTextContent = '';
+
+            if (password.length >= 8) strength++;
+            if (password.length >= 12) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+            if (strength < 3) {
+                strengthContainer.className = 'password-strength weak';
+                strengthTextContent = 'Password lemah (min: 8 karakter, campur: huruf, angka, simbol)';
+            } else if (strength < 5) {
+                strengthContainer.className = 'password-strength medium';
+                strengthTextContent = 'Password sedang (tambahkan simbol untuk lebih kuat)';
+            } else {
+                strengthContainer.className = 'password-strength strong';
+                strengthTextContent = 'Password kuat!';
+            }
+
+            strengthText.textContent = strengthTextContent;
+        }
+
+        // Auto-check password strength on input
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            if (passwordInput && passwordInput.value) {
+                checkPasswordStrength(passwordInput.value);
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -188,6 +188,150 @@ class AdminController extends Controller
     }
 
     /**
+     * Tampilkan halaman management users
+     */
+    public function users(Request $request)
+    {
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+            $users = $mikrotik->getUsers();
+
+            // Get profiles for dropdown
+            $profiles = $mikrotik->getProfiles();
+
+            return view('admin.users', compact('users', 'profiles'));
+        } catch (\Exception $e) {
+            return view('admin.users', [
+                'users' => [],
+                'profiles' => [],
+                'error' => 'Tidak dapat terhubung ke MikroTik: ' . $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Tampilkan form create user
+     */
+    public function createUser()
+    {
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+            $profiles = $mikrotik->getProfiles();
+            return view('admin.users-create', compact('profiles'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Tidak dapat mengambil data profiles: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Simpan user baru
+     */
+    public function storeUser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|min:3|max:32',
+            'password' => 'required|string|min:4|max:32',
+            'profile' => 'required|string'
+        ]);
+
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+
+            // Check if user already exists
+            if ($mikrotik->userExists($request->name)) {
+                return back()->with('error', 'Username sudah terdaftar!')->withInput();
+            }
+
+            $result = $mikrotik->createUser($request->name, $request->password, $request->profile);
+
+            return redirect()->route('admin.users')
+                ->with('success', "User {$request->name} berhasil dibuat!");
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal membuat user: ' . $e->getMessage())->withInput();
+        }
+    }
+
+    /**
+     * Tampilkan form edit user
+     */
+    public function editUser($username)
+    {
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+            $user = $mikrotik->getUserByUsername($username);
+            $profiles = $mikrotik->getProfiles();
+
+            if (!$user) {
+                return redirect()->route('admin.users')->with('error', 'User tidak ditemukan!');
+            }
+
+            return view('admin.users-edit', compact('user', 'profiles'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengambil data user: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Update user
+     */
+    public function updateUser(Request $request, $username)
+    {
+        $request->validate([
+            'password' => 'nullable|string|min:4|max:32',
+            'profile' => 'required|string'
+        ]);
+
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+            $user = $mikrotik->getUserByUsername($username);
+
+            if (!$user) {
+                return back()->with('error', 'User tidak ditemukan!');
+            }
+
+            $result = $mikrotik->updateUser(
+                $user['.id'],
+                $request->password ?: null,
+                $request->profile
+            );
+
+            return redirect()->route('admin.users')
+                ->with('success', "User {$username} berhasil diupdate!");
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal update user: ' . $e->getMessage())->withInput();
+        }
+    }
+
+    /**
+     * Hapus user
+     */
+    public function deleteUser($username)
+    {
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+            $user = $mikrotik->getUserByUsername($username);
+
+            if (!$user) {
+                return back()->with('error', 'User tidak ditemukan!');
+            }
+
+            // Kick user if active first
+            $mikrotik->kickUser($username);
+
+            // Delete user
+            $mikrotik->deleteUser($user['.id']);
+
+            return redirect()->route('admin.users')
+                ->with('success', "User {$username} berhasil dihapus!");
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal menghapus user: ' . $e->getMessage());
+        }
+    }
+
+    /**
      * Get statistics based on filter
      */
     private function getStats($filter)
