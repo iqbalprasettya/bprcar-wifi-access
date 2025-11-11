@@ -479,19 +479,22 @@
 
         @media (max-width: 768px) {
             .wave-header {
-                height: 280px;
+                height: auto;
+                min-height: 320px;
+                padding-bottom: 40px;
             }
 
             .waves {
-                height: 40px;
-                min-height: 40px;
+                height: 60px;
+                min-height: 60px;
             }
 
             .header-content {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 20px;
-                padding-top: 30px;
+                gap: 25px;
+                padding: 35px 20px 20px;
+                max-width: 100%;
             }
 
             .header-left {
@@ -501,40 +504,92 @@
             .header-right {
                 width: 100%;
                 text-align: left;
+                padding-top: 10px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
             }
 
             .header-left h1 {
-                font-size: 28px;
+                font-size: 26px;
+                line-height: 1.2;
+            }
+
+            .header-left p {
+                font-size: 14px;
+                margin-top: 6px;
+            }
+
+            .status-badge {
+                font-size: 12px;
+                padding: 6px 16px;
             }
 
             .username-display {
                 font-size: 24px;
+                line-height: 1.2;
+            }
+
+            .welcome-text {
+                font-size: 14px;
             }
 
             .container {
-                margin-top: -60px;
+                margin-top: -50px;
+                padding: 0 15px;
             }
 
             .stats-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat-card {
+                padding: 15px;
             }
 
             .stat-value {
                 font-size: 20px;
             }
+
+            .stat-label {
+                font-size: 10px;
+            }
+
+            .info-card {
+                padding: 20px 15px;
+            }
+
+            .card-header {
+                font-size: 15px;
+            }
+
+            .info-row {
+                padding: 10px 0;
+                font-size: 13px;
+            }
+
+            .info-label,
+            .info-value {
+                font-size: 13px;
+            }
+
+            .logout-btn {
+                padding: 12px;
+                font-size: 14px;
+            }
         }
 
         @media (max-width: 480px) {
             .wave-header {
-                height: 250px;
+                min-height: 280px;
             }
 
             .header-content {
-                padding-top: 25px;
+                padding: 30px 15px 20px;
+                gap: 20px;
             }
 
             .header-left h1 {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .header-left p {
@@ -549,8 +604,55 @@
                 font-size: 13px;
             }
 
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 16px;
+            }
+
+            .stat-value {
+                font-size: 22px;
+            }
+
+            .stat-header {
+                margin-bottom: 8px;
+            }
+
             .info-card {
-                padding: 20px;
+                padding: 18px 12px;
+            }
+
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+                padding: 12px 0;
+            }
+
+            .info-value {
+                text-align: left;
+                word-break: break-all;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header-left h1 {
+                font-size: 20px;
+            }
+
+            .username-display {
+                font-size: 18px;
+            }
+
+            .stat-card {
+                padding: 14px;
+            }
+
+            .stat-value {
+                font-size: 20px;
             }
         }
     </style>
