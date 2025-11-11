@@ -11,13 +11,35 @@ class PortalController extends Controller
     /**
      * Tampilkan halaman portal login
      * Menerima parameter dari MikroTik: mac, ip, dst
+     * Jika user sudah login, redirect ke dashboard
      */
     public function show(Request $r)
     {
+        $ip = $r->input('ip', $r->ip());
+        $mac = $r->input('mac', '');
+        $dst = $r->input('dst', 'http://google.com');
+
+        // Cek apakah user sudah aktif di MikroTik
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+            $activeSession = $mikrotik->isActiveByIp($ip);
+
+            if ($activeSession) {
+                // User sudah login, redirect ke dashboard
+                return redirect()->route('dashboard', [
+                    'ip' => $ip,
+                    'mac' => $mac,
+                    'dst' => $dst
+                ]);
+            }
+        } catch (\Exception $e) {
+            // Jika error koneksi MikroTik, tetap tampilkan form login
+        }
+
         return view('portal', [
-            'mac' => $r->input('mac', ''),
-            'ip' => $r->input('ip', ''),
-            'dst' => $r->input('dst', 'http://google.com')
+            'mac' => $mac,
+            'ip' => $ip,
+            'dst' => $dst
         ]);
     }
 

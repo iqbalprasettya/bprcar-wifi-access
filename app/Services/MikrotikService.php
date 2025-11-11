@@ -75,4 +75,45 @@ class MikrotikService
         }
         return true;
     }
+
+    /**
+     * Cek apakah user dengan IP tertentu sedang aktif
+     */
+    public function isActiveByIp($ip)
+    {
+        $active = $this->client->query(
+            (new Query('/ip/hotspot/active/print'))->where('address', $ip)
+        )->read();
+
+        return !empty($active) ? $active[0] : null;
+    }
+
+    /**
+     * Cek apakah user dengan MAC tertentu sedang aktif
+     */
+    public function isActiveByMac($mac)
+    {
+        $active = $this->client->query(
+            (new Query('/ip/hotspot/active/print'))->where('mac-address', $mac)
+        )->read();
+
+        return !empty($active) ? $active[0] : null;
+    }
+
+    /**
+     * Kick user berdasarkan IP address
+     */
+    public function kickByIp($ip)
+    {
+        $active = $this->client->query(
+            (new Query('/ip/hotspot/active/print'))->where('address', $ip)
+        )->read();
+
+        foreach ($active as $a) {
+            $this->client->query(
+                (new Query('/ip/hotspot/active/remove'))->equal('.id', $a['.id'])
+            );
+        }
+        return true;
+    }
 }
