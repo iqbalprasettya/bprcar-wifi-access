@@ -235,6 +235,30 @@
             margin-bottom: 12px;
         }
 
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #1cc88a;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(28, 200, 138, 0.7);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(28, 200, 138, 0);
+            }
+        }
+
         .nav-btn,
         .logout-btn {
             display: inline-flex;
@@ -694,42 +718,37 @@
                 <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
             </defs>
             <g class="parallax">
-                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(245,245,245,0.7)" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(245,245,245,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(245,245,245,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(245,245,245)" />
             </g>
         </svg>
 
-        <div class="header-content" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
-            <div class="header-left" style="min-width: 220px;">
-                <h1 style="margin-bottom: 6px; font-size: 1.6rem; font-weight: bold;">Hotspot Activity Logs</h1>
-                <p style="margin: 0 0 14px 0; color: #6c757d; font-size: 14px;">
-                    Monitor & Tracking aktivitas user hotspot
-                </p>
-                <nav style="display: flex; flex-wrap: wrap; gap: 8px;">
-                    <a href="{{ route('admin.active-users') }}" class="nav-btn" style="padding: 7px 20px; border-radius: 6px; border: 1px solid #4e73df; color: #4e73df; background: #f4f7fa; font-size: 13px; font-weight: 500; transition: background .2s; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; margin-right: 5px; vertical-align: -2px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#4e73df" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a8 8 0 00-16 0v2h5m1-4a4 4 0 110-8 4 4 0 010 8z"/></svg>
+        <div class="header-content">
+            <div class="header-left">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    Admin System
+                </div>
+                <h1>Hotspot Activity Logs</h1>
+                <p>Monitor dan tracking aktivitas user hotspot</p>
+            </div>
+            <div class="header-right">
+                <p class="welcome-text">Selamat datang kembali,</p>
+                <div class="username-display">{{ Auth::user()->name }}</div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <a href="{{ route('admin.active-users') }}" class="nav-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            style="width: 16px; height: 16px;">
+                            <path
+                                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+                        </svg>
                         Active Users
                     </a>
-                    <a href="{{ route('admin.logs') }}" class="nav-btn" style="padding: 7px 20px; border-radius: 6px; border: 1px solid #888; color: #888; background: #fff; font-size: 13px; font-weight: 500; transition: background .2s; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; margin-right: 5px; vertical-align: -2px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#888" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16c0 1.1.9 2 2 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6a2 2 0 00-2 2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 2v4m6-4v4"/></svg>
-                        Logs
-                    </a>
-                </nav>
-            </div>
-            <div class="header-right" style="min-width: 190px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
-                <div class="status-badge" style="display: flex; align-items: center; gap: 7px; color: #1cc88a; font-weight: 600; font-size: 13px; background: #e6fff4; padding: 2px 12px 2px 2px; border-radius: 8px;">
-                    <span style="width: 9px; height: 9px; background: #1cc88a; border-radius: 50%; display: inline-block;"></span>
-                    Admin Online
-                </div>
-                <div class="username-display" style="color: #102144; font-size: 16px; font-weight: 600;">
-                    {{ Auth::user()->name }}
-                </div>
-                <div style="display: flex; gap: 10px;">
                     <form method="POST" action="{{ route('admin.logout') }}" style="display: inline;">
                         @csrf
-                        <button type="submit" class="logout-btn" style="display: flex; align-items: center; background: #e74a3b; color: #fff; border: none; border-radius: 5px; font-size: 13px; font-weight: 500; padding: 7px 15px; box-shadow: 0 2px 8px rgba(231,74,59,0.08); cursor: pointer; gap: 6px; transition: box-shadow 0.18s;">
+                        <button type="submit" class="logout-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                 style="width: 16px; height: 16px;">
                                 <path fill-rule="evenodd"
