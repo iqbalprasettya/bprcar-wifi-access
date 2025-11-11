@@ -83,9 +83,9 @@
 
         .login-card {
             background: white;
-            padding: 45px 40px;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            padding: 50px 45px;
+            border-radius: 20px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
             animation: fadeInUp 0.6s ease-out;
         }
 
@@ -107,99 +107,129 @@
         }
 
         .admin-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
+            width: 85px;
+            height: 85px;
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(78, 115, 223, 0.25);
         }
 
         .admin-icon svg {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             fill: white;
         }
 
         h2 {
-            color: #4e73df;
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 8px;
+            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
             color: #858796;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 500;
         }
 
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
 
         label {
             display: block;
-            color: #5a5c69;
+            color: #3a3d4a;
             font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
         }
 
-        input[type="text"],
+        input[type="email"],
         input[type="password"] {
             width: 100%;
-            padding: 14px 18px;
-            border: 2px solid #e3e6f0;
-            border-radius: 8px;
+            padding: 16px 20px;
+            border: 2px solid #e3e8ef;
+            border-radius: 12px;
             font-size: 15px;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             background: #f8f9fc;
-            color: #5a5c69;
+            color: #2d3748;
+            font-weight: 500;
         }
 
-        input[type="text"]:focus,
+        input[type="email"]:focus,
         input[type="password"]:focus {
             outline: none;
             border-color: #4e73df;
             background: white;
-            box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.1);
+            box-shadow: 0 0 0 4px rgba(78, 115, 223, 0.12), 0 4px 12px rgba(78, 115, 223, 0.08);
+            transform: translateY(-1px);
         }
 
         button[type="submit"] {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
+            padding: 18px;
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(78, 115, 223, 0.25);
-            margin-top: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(78, 115, 223, 0.3);
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button[type="submit"]:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        button[type="submit"]:hover:before {
+            left: 100%;
         }
 
         button[type="submit"]:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(78, 115, 223, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(78, 115, 223, 0.4);
         }
 
         button[type="submit"]:active {
-            transform: translateY(0);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(78, 115, 223, 0.3);
         }
 
         .error-message {
-            background: #fee2e2;
-            border-left: 4px solid #ef4444;
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 5px solid #ef4444;
             color: #991b1b;
-            padding: 14px 18px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
             font-size: 14px;
+            font-weight: 600;
             animation: shake 0.5s;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
         }
 
         @keyframes shake {
@@ -219,13 +249,15 @@
         }
 
         .success-message {
-            background: #d1fae5;
-            border-left: 4px solid #10b981;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-left: 5px solid #10b981;
             color: #065f46;
-            padding: 14px 18px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
             font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
         }
 
         .footer-text {

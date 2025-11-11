@@ -120,6 +120,62 @@ class AdminController extends Controller
     }
 
     /**
+     * Tampilkan halaman active users
+     */
+    public function activeUsers(Request $request)
+    {
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+            $activeUsers = $mikrotik->getActive();
+
+            // Get user stats from logs
+            $userStats = [];
+            foreach ($activeUsers as $user) {
+                $username = $user['user'] ?? 'Unknown';
+
+                // Get total sessions and traffic from logs
+                $totalLogins = HotspotLog::where('username', $username)
+                    ->where('action', 'login_success')
+                    ->count();
+
+                $totalTraffic = HotspotLog::where('username', $username)
+                    ->whereIn('action', ['logout', 'kicked'])
+                    ->selectRaw('SUM(bytes_in + bytes_out) as total')
+                    ->value('total') ?? 0;
+
+                $userStats[$username] = [
+                    'total_logins' => $totalLogins,
+                    'total_traffic' => $totalTraffic
+                ];
+            }
+
+            return view('admin.active-users', compact('activeUsers', 'userStats'));
+        } catch (\Exception $e) {
+            return view('admin.active-users', [
+                'activeUsers' => [],
+                'userStats' => [],
+                'error' => 'Tidak dapat terhubung ke MikroTik: ' . $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Kick user dari active session
+     */
+    public function kickUser(Request $request, $ip)
+    {
+        try {
+            $mikrotik = app(\App\Services\MikrotikService::class);
+            $mikrotik->kickByIp($ip);
+
+            return redirect()->route('admin.active-users')
+                ->with('success', "User dengan IP {$ip} berhasil di-kick");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal kick user: ' . $e->getMessage());
+        }
+    }
+
+    /**
      * Get statistics based on filter
      */
     private function getStats($filter)
