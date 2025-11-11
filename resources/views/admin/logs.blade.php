@@ -22,8 +22,80 @@
         .wave-header {
             position: relative;
             background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
-            height: 300px;
+            height: 350px;
             overflow: hidden;
+        }
+
+        /* Floating particles/bubbles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: float-up 15s infinite ease-in;
+        }
+
+        .particle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            left: 15%;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .particle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            left: 40%;
+            animation-delay: 3s;
+            animation-duration: 15s;
+        }
+
+        .particle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            left: 65%;
+            animation-delay: 5s;
+            animation-duration: 20s;
+        }
+
+        .particle:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            left: 85%;
+            animation-delay: 2s;
+            animation-duration: 16s;
+        }
+
+        @keyframes float-up {
+            0% {
+                bottom: -100px;
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 110%;
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
         }
 
         /* SVG Wave Animation */
@@ -624,6 +696,14 @@
 
 <body>
     <div class="wave-header">
+        <!-- Floating Particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
         <!-- Waves Container -->
         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
