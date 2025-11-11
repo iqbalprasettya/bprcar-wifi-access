@@ -701,23 +701,35 @@
             </g>
         </svg>
 
-        <div class="header-content">
-            <div class="header-left">
-                <h1>Hotspot Activity Logs</h1>
-                <p>Monitor dan tracking aktivitas user hotspot</p>
-                
-                {{-- link / link / link --}}
-                <a href="{{ route('admin.active-users') }}">Active Users</a>
-                
+        <div class="header-content" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+            <div class="header-left" style="min-width: 220px;">
+                <h1 style="margin-bottom: 6px; font-size: 1.6rem; font-weight: bold;">Hotspot Activity Logs</h1>
+                <p style="margin: 0 0 14px 0; color: #6c757d; font-size: 14px;">
+                    Monitor & Tracking aktivitas user hotspot
+                </p>
+                <nav style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <a href="{{ route('admin.active-users') }}" class="nav-btn" style="padding: 7px 20px; border-radius: 6px; border: 1px solid #4e73df; color: #4e73df; background: #f4f7fa; font-size: 13px; font-weight: 500; transition: background .2s; text-decoration: none;">
+                        <svg style="width: 15px; height: 15px; margin-right: 5px; vertical-align: -2px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#4e73df" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a8 8 0 00-16 0v2h5m1-4a4 4 0 110-8 4 4 0 010 8z"/></svg>
+                        Active Users
+                    </a>
+                    <a href="{{ route('admin.logs') }}" class="nav-btn" style="padding: 7px 20px; border-radius: 6px; border: 1px solid #888; color: #888; background: #fff; font-size: 13px; font-weight: 500; transition: background .2s; text-decoration: none;">
+                        <svg style="width: 15px; height: 15px; margin-right: 5px; vertical-align: -2px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#888" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16c0 1.1.9 2 2 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6a2 2 0 00-2 2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 2v4m6-4v4"/></svg>
+                        Logs
+                    </a>
+                </nav>
             </div>
-            <div class="header-right">
-                <div class="username-display">
+            <div class="header-right" style="min-width: 190px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+                <div class="status-badge" style="display: flex; align-items: center; gap: 7px; color: #1cc88a; font-weight: 600; font-size: 13px; background: #e6fff4; padding: 2px 12px 2px 2px; border-radius: 8px;">
+                    <span style="width: 9px; height: 9px; background: #1cc88a; border-radius: 50%; display: inline-block;"></span>
+                    Admin Online
+                </div>
+                <div class="username-display" style="color: #102144; font-size: 16px; font-weight: 600;">
                     {{ Auth::user()->name }}
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <form method="POST" action="{{ route('admin.logout') }}" style="display: inline;">
                         @csrf
-                        <button type="submit" class="logout-btn">
+                        <button type="submit" class="logout-btn" style="display: flex; align-items: center; background: #e74a3b; color: #fff; border: none; border-radius: 5px; font-size: 13px; font-weight: 500; padding: 7px 15px; box-shadow: 0 2px 8px rgba(231,74,59,0.08); cursor: pointer; gap: 6px; transition: box-shadow 0.18s;">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                 style="width: 16px; height: 16px;">
                                 <path fill-rule="evenodd"
