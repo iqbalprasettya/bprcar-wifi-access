@@ -904,6 +904,15 @@
                                             $badgeClass = 'badge-danger';
                                         } elseif ($log->action == 'logout') {
                                             $badgeClass = 'badge-warning';
+                                        } elseif ($log->action == 'kicked') {
+                                            $badgeClass = 'badge-danger';
+                                        } elseif ($log->action == 'session_timeout') {
+                                            $badgeClass = 'badge-warning';
+                                        } elseif ($log->action == 'view_dashboard') {
+                                            $badgeClass = 'badge-info';
+                                        }
+                                        elseif ($log->action == 'login_attempt') {
+                                            $badgeClass = 'badge-info';
                                         }
                                     @endphp
                                     <span
