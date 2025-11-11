@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use RouterOS\Client;
@@ -15,7 +16,7 @@ class MikrotikService
             'host' => env('MT_HOST'),
             'user' => env('MT_USER'),
             'pass' => env('MT_PASS'),
-            'port' => env('MT_PORT', 8728),
+            'port' => (int) env('MT_PORT', 8728),
             'timeout' => 5,
         ]);
     }
