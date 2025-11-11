@@ -172,26 +172,19 @@
             Mohon tunggu, kami sedang menghubungkan Anda ke internet<span class="dots"><span>.</span><span>.</span><span>.</span></span>
         </p>
 
-        <!-- Form hidden untuk submit ke MikroTik -->
-        <iframe name="mikrotik_frame" style="display:none;"></iframe>
-        <form id="mk" method="post" action="http://login.bprcar.local/login" target="mikrotik_frame">
-            <input type="hidden" name="username" value="{{ $username }}">
-            <input type="hidden" name="password" value="{{ $password }}">
-            <input type="hidden" name="dst" value="{{ $dst }}">
-            <input type="hidden" name="popup" value="true">
-        </form>
-
-        <p class="info-text">Anda akan segera terhubung...</p>
+        <p class="info-text">Jangan tutup halaman ini...</p>
     </div>
 
+    <!-- Form auto-submit ke MikroTik -->
+    <form id="loginForm" method="post" action="http://login.bprcar.local/login" style="display:none;">
+        <input type="hidden" name="username" value="{{ $username }}">
+        <input type="hidden" name="password" value="{{ $password }}">
+        <input type="hidden" name="dst" value="{{ $dst }}">
+    </form>
+
     <script>
-        // Submit form ke MikroTik dalam iframe
-        document.getElementById('mk').submit();
-        
-        // Setelah 2 detik, redirect ke dashboard
-        setTimeout(function() {
-            window.location.href = "{{ $dst }}";
-        }, 2000);
+        // Auto submit form
+        document.getElementById('loginForm').submit();
     </script>
 </body>
 </html>

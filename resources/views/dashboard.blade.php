@@ -16,6 +16,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f5f5;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .wave-header {
@@ -25,20 +26,130 @@
             overflow: hidden;
         }
 
-        .wave-header::after {
-            content: '';
+        /* Wave Animation Layers */
+        .waves {
             position: absolute;
-            bottom: -2px;
+            bottom: 0;
             left: 0;
             width: 100%;
             height: 120px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f5f5f5' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
-            background-size: cover;
+            margin-bottom: -7px;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background-repeat: repeat-x;
+        }
+
+        .wave1 {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f5f5f5' fill-opacity='0.3' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            animation: wave 25s linear infinite;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .wave2 {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f5f5f5' fill-opacity='0.5' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,170.7C960,160,1056,160,1152,170.7C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            animation: wave 20s linear infinite reverse;
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        .wave3 {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f5f5f5' fill-opacity='1' d='M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,165.3C672,149,768,139,864,149.3C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            animation: wave 15s linear infinite;
+            z-index: 3;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Floating particles/bubbles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: float-up 15s infinite ease-in;
+        }
+
+        .particle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            left: 15%;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .particle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            left: 40%;
+            animation-delay: 3s;
+            animation-duration: 15s;
+        }
+
+        .particle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            left: 65%;
+            animation-delay: 5s;
+            animation-duration: 20s;
+        }
+
+        .particle:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            left: 85%;
+            animation-delay: 2s;
+            animation-duration: 16s;
+        }
+
+        @keyframes float-up {
+            0% {
+                bottom: -100px;
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 110%;
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
         }
 
         .header-content {
             position: relative;
-            z-index: 2;
+            z-index: 10;
             text-align: center;
             padding-top: 50px;
             color: white;
@@ -56,6 +167,7 @@
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 15px;
+            animation: fadeIn 0.8s ease-out;
         }
 
         .status-dot {
@@ -72,11 +184,23 @@
             100% {
                 opacity: 1;
                 transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(28, 200, 138, 0.7);
             }
 
             50% {
-                opacity: 0.7;
+                opacity: 0.8;
                 transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(28, 200, 138, 0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
             }
         }
 
@@ -85,18 +209,45 @@
             font-weight: 700;
             margin-bottom: 8px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header-content .welcome-text {
             font-size: 16px;
             opacity: 0.95;
             margin-bottom: 5px;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
         .username-display {
             font-size: 22px;
             font-weight: 600;
             margin-top: 5px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container {
@@ -121,6 +272,35 @@
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             border-left: 4px solid #4e73df;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.6s ease-out both;
+        }
+
+        .stat-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stat-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .stat-card:hover {
@@ -182,6 +362,7 @@
             padding: 25px;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             margin-bottom: 20px;
+            animation: slideUp 0.6s ease-out 0.5s both;
         }
 
         .card-header {
@@ -199,6 +380,15 @@
             align-items: center;
             padding: 12px 0;
             border-bottom: 1px solid #f8f9fc;
+            transition: background 0.3s ease;
+        }
+
+        .info-row:hover {
+            background: #f8f9fc;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin: 0 -10px;
+            border-radius: 5px;
         }
 
         .info-row:last-child {
@@ -234,6 +424,27 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            animation: slideUp 0.6s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logout-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .logout-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .logout-btn:hover {
@@ -245,6 +456,13 @@
             width: 18px;
             height: 18px;
             fill: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logout-btn span {
+            position: relative;
+            z-index: 1;
         }
 
         .footer-text {
@@ -302,6 +520,15 @@
 
 <body>
     <div class="wave-header">
+        <!-- Floating Particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- Header Content -->
         <div class="header-content">
             <div class="status-badge">
                 <span class="status-dot"></span>
@@ -310,6 +537,13 @@
             <h1>Dashboard Internet</h1>
             <p class="welcome-text">Selamat datang kembali,</p>
             <div class="username-display">{{ $sessionData['username'] }}</div>
+        </div>
+
+        <!-- Animated Waves -->
+        <div class="waves">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
         </div>
     </div>
 
@@ -412,7 +646,7 @@
                         d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
                         clip-rule="evenodd" />
                 </svg>
-                Logout dari Internet
+                <span>Logout dari Internet</span>
             </button>
         </form>
 
