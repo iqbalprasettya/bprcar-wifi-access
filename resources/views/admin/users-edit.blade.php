@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+@php
+if (!function_exists('formatBytes')) {
+    function formatBytes($size, $precision = 2) {
+        $base = log($size, 1024);
+        $suffixes = ['', 'KB', 'MB', 'GB', 'TB'];
+        return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
+    }
+}
+@endphp
+
 @section('content')
 <div class="portal-container">
     <!-- Animated Background -->
@@ -203,15 +213,6 @@
     </div>
 </div>
 
-@if (!function_exists('formatBytes'))
-    <?php
-    function formatBytes($size, $precision = 2) {
-        $base = log($size, 1024);
-        $suffixes = ['', 'KB', 'MB', 'GB', 'TB'];
-        return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
-    }
-    ?>
-@endif
 
 <style>
 /* Portal Container */
