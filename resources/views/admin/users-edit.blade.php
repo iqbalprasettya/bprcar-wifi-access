@@ -600,7 +600,6 @@ if (!function_exists('formatBytes')) {
                     <!-- Username Field (Read-only) -->
                     <div class="form-group">
                         <label class="form-label">
-                            <i class="fas fa-user"></i>
                             Username
                         </label>
                         <input type="text" value="{{ $user['name'] ?? '' }}" readonly
@@ -611,7 +610,6 @@ if (!function_exists('formatBytes')) {
                     <!-- Password Field -->
                     <div class="form-group">
                         <label class="form-label">
-                            <i class="fas fa-lock"></i>
                             Password Baru
                         </label>
                         <div class="password-input-group">
@@ -628,7 +626,6 @@ if (!function_exists('formatBytes')) {
                     <!-- Profile Selection -->
                     <div class="form-group">
                         <label class="form-label">
-                            <i class="fas fa-user-tag"></i>
                             Profile
                         </label>
                         <select id="profile" name="profile" class="form-control" required>
