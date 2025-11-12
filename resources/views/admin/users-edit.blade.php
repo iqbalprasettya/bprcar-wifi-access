@@ -34,8 +34,8 @@
                     <div class="stat-card">
                         <i class="fas fa-clock"></i>
                         <div class="stat-text">
-                            <small>Terdaftar</small>
-                            <strong>{{ \Carbon\Carbon::parse($user['.id'] ?? 'now')->format('d M Y') }}</strong>
+                            <small>User ID</small>
+                            <strong>{{ $user['.id'] ?? 'Unknown' }}</strong>
                         </div>
                     </div>
                 </div>
