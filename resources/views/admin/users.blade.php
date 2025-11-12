@@ -695,7 +695,7 @@ if (!function_exists('formatBytes')) {
         <div class="actions-bar">
             <a href="{{ route('admin.users.create') }}" class="btn-create">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
-                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v7.5a.75.75 0 01-1.5 0v-7.5a.75.75 0 01.75-.75zM12.75 8.25a.75.75 0 00-.75.75v7.5h7.5a.75.75 0 000-1.5h-7.5z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
                 </svg>
                 Tambah User Baru
             </a>
@@ -738,7 +738,7 @@ if (!function_exists('formatBytes')) {
                                     <td class="actions-cell">
                                         <a href="{{ route('admin.users.edit', $user['name']) }}" class="btn-action btn-edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px;">
-                                                <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652-2.652L10.582 9.07a1.875 1.875 0 01-2.652 0L3.51 13.225a1.875 1.875 0 012.652-2.652zm3.62 4.637a.75.75 0 001.06-1.061l-1.061-1.061a.75.75 0 00-1.061 1.06l1.06 1.061A.75.75 0 0018.824 19.875l1.06-1.06z" />
+                                                <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.855-4.687a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                             </svg>
                                             Edit
                                         </a>
@@ -749,7 +749,7 @@ if (!function_exists('formatBytes')) {
                                             @method('DELETE')
                                             <button type="submit" class="btn-action btn-delete">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px;">
-                                                    <path fill-rule="evenodd" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652-2.652L10.582 9.07a1.875 1.875 0 01-2.652 0L3.51 13.225a1.875 1.875 0 012.652-2.652zm3.62 4.637a.75.75 0 001.06-1.061l-1.061-1.061a.75.75 0 00-1.061 1.06l1.06 1.061A.75.75 0 0018.824 19.875l1.06-1.06z" />
+                                                    <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 10.431c.264.273.45.614.526 1.007a2.24 2.24 0 01-2.234 2.234H6.6a2.24 2.24 0 01-2.234-2.234c.076-.393.262-.734.526-1.007L3.947 6.633a46.282 46.282 0 01-.209-.035.75.75 0 01-.256-1.478A48.816 48.816 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113h-6v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 001.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
                                                 </svg>
                                                 Hapus
                                             </button>
