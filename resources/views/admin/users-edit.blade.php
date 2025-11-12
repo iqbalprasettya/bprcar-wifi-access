@@ -320,29 +320,6 @@ if (!function_exists('formatBytes')) {
             }
         }
 
-        .form-header {
-            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
-            color: white;
-            padding: 25px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .form-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .form-actions {
-            display: flex;
-            gap: 10px;
-        }
-
         .btn {
             padding: 10px 20px;
             border-radius: 8px;
@@ -358,87 +335,8 @@ if (!function_exists('formatBytes')) {
             white-space: nowrap;
         }
 
-        .btn-back {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-back:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: white;
-        }
-
         .form-body {
             padding: 30px;
-        }
-
-        /* User Info Preview */
-        .user-info-preview {
-            display: flex;
-            align-items: center;
-            padding: 25px;
-            background: #f8f9fc;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            border: 2px solid #e3e6f0;
-        }
-
-        .user-avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #4e73df 0%, #36b9cc 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 25px;
-            color: white;
-            font-size: 2rem;
-            box-shadow: 0 8px 16px rgba(78, 115, 223, 0.3);
-        }
-
-        .user-details h4 {
-            margin: 0 0 10px 0;
-            font-size: 1.5rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .user-details p {
-            margin: 5px 0;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .profile-badge {
-            background: #4CAF50;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-            display: inline-block;
-        }
-
-        .status-active {
-            background: #4CAF50;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-            display: inline-block;
-        }
-
-        .status-disabled {
-            background: #f44336;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-            display: inline-block;
         }
 
         /* Form Groups */
@@ -502,77 +400,7 @@ if (!function_exists('formatBytes')) {
             color: #4e73df;
         }
 
-        /* Password Strength */
-        .password-strength-container {
-            margin-top: 8px;
-        }
-
-        .password-strength-bar {
-            height: 4px;
-            background: #e3e8ee;
-            border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 5px;
-        }
-
-        .strength-fill {
-            height: 100%;
-            width: 0%;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .strength-text {
-            font-size: 12px;
-            color: #666;
-        }
-
-        .strength-weak { background: #f44336; width: 33%; }
-        .strength-medium { background: #ff9800; width: 66%; }
-        .strength-strong { background: #4CAF50; width: 100%; }
-
-        /* Current Info Box */
-        .current-info-box {
-            background: #f8fafc;
-            border: 2px solid #e3e8ee;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-
-        .current-info-box h4 {
-            margin: 0 0 15px 0;
-            color: #333;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-        }
-
-        .info-item label {
-            font-weight: 500;
-            color: #666;
-            font-size: 13px;
-        }
-
-        .info-item span {
-            color: #333;
-            font-weight: 600;
-            font-size: 13px;
-        }
-
+  
         /* Form Actions */
         .form-actions-group {
             display: flex;
@@ -685,26 +513,7 @@ if (!function_exists('formatBytes')) {
                 padding: 0 15px;
             }
 
-            .form-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-
-            .user-info-preview {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .user-avatar {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
+        
             .form-actions-group {
                 flex-direction: column;
             }
@@ -770,36 +579,9 @@ if (!function_exists('formatBytes')) {
     </div>
 
     <div class="container">
-        <!-- Edit Form Container -->
+        <!-- Simple Edit Form -->
         <div class="edit-form-container">
-            <div class="form-header">
-                <h3 class="form-title">
-                    <i class="fas fa-user-edit"></i>
-                    Edit User
-                </h3>
-                <div class="form-actions">
-                    <a href="{{ route('admin.users') }}" class="btn btn-back">
-                        <i class="fas fa-arrow-left"></i>
-                        Kembali
-                    </a>
-                </div>
-            </div>
-
             <div class="form-body">
-                <!-- Current User Info -->
-                <div class="user-info-preview">
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="user-details">
-                        <h4>{{ $user['name'] ?? 'Unknown' }}</h4>
-                        <p>Profile: <span class="profile-badge">{{ $user['profile'] ?? 'N/A' }}</span></p>
-                        <p>Status: <span class="status-badge {{ ($user['disabled'] ?? false) == 'true' ? 'status-disabled' : 'status-active' }}">
-                            {{ ($user['disabled'] ?? false) == 'true' ? 'Disabled' : 'Active' }}
-                        </span></p>
-                    </div>
-                </div>
-
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -840,12 +622,6 @@ if (!function_exists('formatBytes')) {
                                 <i class="fas fa-eye" id="password-toggle-icon"></i>
                             </button>
                         </div>
-                        <div class="password-strength-container">
-                            <div class="password-strength-bar">
-                                <div id="password-strength" class="strength-fill"></div>
-                            </div>
-                            <span id="password-strength-text" class="strength-text">Kosongkan jika tidak ingin mengubah password</span>
-                        </div>
                         <small style="color: #666; font-size: 12px; margin-top: 5px; display: block;">Minimal 4 karakter, maksimal 32 karakter</small>
                     </div>
 
@@ -864,33 +640,6 @@ if (!function_exists('formatBytes')) {
                                 </option>
                             @endforeach
                         </select>
-                    </div>
-
-                    <!-- Current Info Summary -->
-                    <div class="current-info-box">
-                        <h4><i class="fas fa-info-circle"></i> Informasi Saat Ini</h4>
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <label>User ID:</label>
-                                <span>{{ $user['.id'] ?? 'N/A' }}</span>
-                            </div>
-                            <div class="info-item">
-                                <label>Uptime:</label>
-                                <span>{{ $user['uptime'] ?? 'N/A' }}</span>
-                            </div>
-                            <div class="info-item">
-                                <label>Bytes In:</label>
-                                <span>{{ formatBytes($user['bytes-in'] ?? 0) }}</span>
-                            </div>
-                            <div class="info-item">
-                                <label>Bytes Out:</label>
-                                <span>{{ formatBytes($user['bytes-out'] ?? 0) }}</span>
-                            </div>
-                            <div class="info-item">
-                                <label>Login By:</label>
-                                <span>{{ $user['login-by'] ?? 'N/A' }}</span>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Form Actions -->
@@ -924,45 +673,7 @@ if (!function_exists('formatBytes')) {
             }
         }
 
-        // Password strength checker
-        document.getElementById('password').addEventListener('input', function() {
-            const password = this.value;
-            const strengthBar = document.getElementById('password-strength');
-            const strengthText = document.getElementById('password-strength-text');
-
-            if (password.length === 0) {
-                strengthBar.className = 'strength-fill';
-                strengthText.textContent = 'Kosongkan jika tidak ingin mengubah password';
-                return;
-            }
-
-            let strength = 0;
-
-            // Length check
-            if (password.length >= 8) strength++;
-            if (password.length >= 12) strength++;
-
-            // Character variety
-            if (/[a-z]/.test(password)) strength++;
-            if (/[A-Z]/.test(password)) strength++;
-            if (/[0-9]/.test(password)) strength++;
-            if (/[^a-zA-Z0-9]/.test(password)) strength++;
-
-            // Update strength indicator
-            strengthBar.className = 'strength-fill';
-
-            if (strength <= 2) {
-                strengthBar.classList.add('strength-weak');
-                strengthText.textContent = 'Lemah';
-            } else if (strength <= 4) {
-                strengthBar.classList.add('strength-medium');
-                strengthText.textContent = 'Sedang';
-            } else {
-                strengthBar.classList.add('strength-strong');
-                strengthText.textContent = 'Kuat';
-            }
-        });
-
+    
         // Form validation feedback
         const form = document.getElementById('editUserForm');
         form.addEventListener('submit', function(e) {
