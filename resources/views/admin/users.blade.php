@@ -1,3 +1,14 @@
+@php
+if (!function_exists('formatBytes')) {
+    function formatBytes($size, $precision = 2) {
+        if ($size == 0) return '0 B';
+        $base = log($size, 1024);
+        $suffixes = ['B', 'KB', 'MB', 'GB', 'TB'];
+        return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
+    }
+}
+@endphp
+
 <!doctype html>
 <html lang="id">
 
@@ -722,8 +733,8 @@
                                     </td>
                                     <td>{{ $user['disabled'] ?? 'No' }}</td>
                                     <td>{{ $user['uptime-limit'] ?? 'unlimited' }}</td>
-                                    <td>{{ $user['bytes-in'] ?? 0 }}</td>
-                                    <td>{{ $user['bytes-out'] ?? 0 }}</td>
+                                    <td>{{ formatBytes($user['bytes-in'] ?? 0) }}</td>
+                                    <td>{{ formatBytes($user['bytes-out'] ?? 0) }}</td>
                                     <td class="actions-cell">
                                         <a href="{{ route('admin.users.edit', $user['name']) }}" class="btn-action btn-edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px;">
