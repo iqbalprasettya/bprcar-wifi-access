@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
 @php
 if (!function_exists('formatBytes')) {
     function formatBytes($size, $precision = 2) {
@@ -10,7 +8,17 @@ if (!function_exists('formatBytes')) {
 }
 @endphp
 
-@section('content')
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Hotspot - BPR CAR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
 <div class="portal-container">
     <!-- Animated Background -->
     <div class="bg-animated">
@@ -973,5 +981,5 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 </script>
-</style>
-@endsection
+</body>
+</html>
